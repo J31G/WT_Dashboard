@@ -1,0 +1,150 @@
+Hi<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Halloween | WolfTeam Admin</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End Plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="../css/modern-vertical/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="../images/favicon.png" />
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:../partials/_sidebar -->
+      <%- include('../../partials/_sidebar'); %>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:../partials/_navbar -->
+        <%- include('../../partials/_navbar'); %>
+        <!-- partial -->
+        <div class="main-panel" style="min-height: 100vh; margin-top: -24px;">
+          <div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title">Halloween Event</h3>
+            </div>
+            <div class="row">
+              <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Create a new daily event</h4>
+                    <form class="forms-sample">
+                      <div class="form-group row">
+                        <label for="eventName" class="col-sm-3 col-form-label">Name</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="eventName">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="eventReward" class="col-sm-3 col-form-label">Reward</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="eventReward">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="eventDescription" class="col-sm-3 col-form-label">Description</label>
+                        <div class="col-sm-9">
+                          <textarea class="form-control h-100" id="eventDescription" rows="10"></textarea>
+                        </div>
+                      </div>
+
+                      <div class="mt-4">
+                        <button type="submit" class="btn btn-primary me-2">Submit</button>
+                        <button class="btn btn-dark">Cancel</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Running events</h4>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Profile</th>
+                            <th>VatNo.</th>
+                            <th>Created</th>
+                            <th>Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Jacob</td>
+                            <td>53275531</td>
+                            <td>12 May 2017</td>
+                            <td><label class="badge badge-danger">Pending</label></td>
+                          </tr>
+                          <tr>
+                            <td>Messsy</td>
+                            <td>53275532</td>
+                            <td>15 May 2017</td>
+                            <td><label class="badge badge-warning">In progress</label></td>
+                          </tr>
+                          <tr>
+                            <td>John</td>
+                            <td>53275533</td>
+                            <td>14 May 2017</td>
+                            <td><label class="badge badge-info">Fixed</label></td>
+                          </tr>
+                          <tr>
+                            <td>Peter</td>
+                            <td>53275534</td>
+                            <td>16 May 2017</td>
+                            <td><label class="badge badge-success">Completed</label></td>
+                          </tr>
+                          <tr>
+                            <td>Dave</td>
+                            <td>53275535</td>
+                            <td>20 May 2017</td>
+                            <td><label class="badge badge-warning">In progress</label></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:../partials/_footer -->
+          <%- include('../../partials/_footer'); %>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="../vendors/progressbar.js/progressbar.min.js"></script>
+    <script src="../vendors/jvectormap/jquery-jvectormap.min.js"></script>
+    <script src="../vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../js/off-canvas.js"></script>
+    <script src="../js/hoverable-collapse.js"></script>
+    <script src="../js/misc.js"></script>
+    <script src="../js/settings.js"></script>
+    <script src="../js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="../js/dashboard.js"></script>
+    <!-- End custom js for this page -->
+  </body>
+</html>
