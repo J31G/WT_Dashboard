@@ -25,6 +25,12 @@
           <div class="content-wrapper full-page-wrapper auth login-2 login-bg">
             <div class="card col-lg-4">
               <div class="card-body px-5 py-5">
+                <% if (messages.error) { %>
+                  <div class="alert alert-dismissible alert-danger">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    <strong>Well this is awkward!</strong><br /><%= messages.error %>
+                  </div>
+                  <% } %>
                 <h3 class="card-title text-start mb-3">Login</h3>
                 <form action="/login" method="POST">
                   <div class="form-group">
