@@ -37,23 +37,23 @@ Hi<!DOCTYPE html>
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Create a new daily event</h4>
-                    <form class="forms-sample">
+                    <form class="forms-sample" action="/events/create-event" method="post">
                       <div class="form-group row">
                         <label for="eventName" class="col-sm-3 col-form-label">Name</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control" id="eventName">
+                          <input name="eventName" type="text" class="form-control" id="eventName">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="eventReward" class="col-sm-3 col-form-label">Reward</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control" id="eventReward">
+                          <input name="eventReward" type="text" class="form-control" id="eventReward">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="eventDescription" class="col-sm-3 col-form-label">Description</label>
                         <div class="col-sm-9">
-                          <textarea class="form-control h-100" id="eventDescription" rows="10"></textarea>
+                          <textarea name="eventDescription" class="form-control h-100" id="eventDescription" rows="10"></textarea>
                         </div>
                       </div>
 
@@ -69,47 +69,33 @@ Hi<!DOCTYPE html>
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Running events</h4>
-                    <div class="table-responsive">
-                      <table class="table">
+                    <div id="eventsDiv" class="table-sorter-wrapper table-responsive">
+                      <table id="eventsTable" class="table table-hover sortable-table">
                         <thead>
                           <tr>
-                            <th>Name</th>
-                            <th>Reward</th>
-                            <th>Created</th>
+                            <th class="sortStyle">Name <i class="mdi mdi-chevron-down"></i></th>
+                            <th class="sortStyle">Reward <i class="mdi mdi-chevron-down"></i></th>
+                            <th class="sortStyle">Created <i class="mdi mdi-chevron-down"></i></th>
                             <th>Status</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>Jacob</td>
-                            <td>53275531</td>
-                            <td>12 May 2017</td>
-                            <td><label class="badge badge-danger">Pending</label></td>
-                          </tr>
-                          <tr>
-                            <td>Messsy</td>
-                            <td>53275532</td>
-                            <td>15 May 2017</td>
-                            <td><label class="badge badge-warning">In progress</label></td>
-                          </tr>
-                          <tr>
-                            <td>John</td>
-                            <td>53275533</td>
-                            <td>14 May 2017</td>
-                            <td><label class="badge badge-info">Fixed</label></td>
-                          </tr>
-                          <tr>
-                            <td>Peter</td>
-                            <td>53275534</td>
-                            <td>16 May 2017</td>
-                            <td><label class="badge badge-success">Completed</label></td>
-                          </tr>
-                          <tr>
-                            <td>Dave</td>
-                            <td>53275535</td>
-                            <td>20 May 2017</td>
-                            <td><label class="badge badge-warning">In progress</label></td>
-                          </tr>
+                          <% events.forEach(element => { %>
+                            <tr id="<%= element._id %>" style="cursor: pointer;" class="eventTableTR">
+                              <td><%= element.name %></td>
+                              <td><%= element.reward %></td>
+                              <td><%= `${element.created_date.toLocaleDateString('en-GB')} ${element.created_date.toLocaleTimeString('en-GB')}` %></td>
+                              <% if (element.status === 'In progress') { %>
+                                <td><label class="badge badge-warning">In progress</label></td>
+                              <% } else if (element.status === 'Completed') { %>
+                                <td><label class="badge badge-success">Completed</label></td>
+                              <% } else if (element.status === 'Ended') { %>
+                                <td><label class="badge badge-info">Ended</label></td>
+                              <% } else { %>
+                                <td><label class="badge badge-danger">Error</label></td>
+                              <% } %>
+                            </tr>
+                          <% }) %>
                         </tbody>
                       </table>
                     </div>
@@ -118,6 +104,56 @@ Hi<!DOCTYPE html>
               </div>
             </div>
           </div>
+
+          <% events.forEach(element => { %>
+
+            <div class="modal fade" id="model-<%= element._id %>" data-bs-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <div class="d-flex align-items-center">
+                      <h5 class="modal-title me-3" id="eventModalLabel"><%= element.name %></h5>
+                      <% if (element.status === 'In progress') { %>
+                        <label class="badge badge-warning">In progress</label>
+                      <% } else if (element.status === 'Completed') { %>
+                        <label class="badge badge-success">Completed</label>
+                      <% } else if (element.status === 'Ended') { %>
+                        <label class="badge badge-info">Ended</label>
+                      <% } else { %>
+                        <label class="badge badge-danger">Error</label>
+                      <% } %>
+                    </div>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="container-fluid">
+                      <div class="row">
+                        <p><strong>Description</strong></p>
+                        <p><%= element.description %></p>
+                      </div>
+                      <div class="row">
+                        <div class="col-6">
+                          <p><strong>Reward</strong></p>
+                          <p><%= element.reward %></p>
+                        </div>
+                        <div class="col-6">
+                          <p><strong>Created</strong></p>
+                          <p><%= `${element.created_date.toLocaleDateString('en-GB')} ${element.created_date.toLocaleTimeString('en-GB')}` %></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          <% }) %>
+
           <!-- content-wrapper ends -->
           <!-- partial:../partials/_footer -->
           <%- include('../../partials/_footer'); %>
@@ -132,9 +168,7 @@ Hi<!DOCTYPE html>
     <script src="../vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
-    <script src="../vendors/progressbar.js/progressbar.min.js"></script>
-    <script src="../vendors/jvectormap/jquery-jvectormap.min.js"></script>
-    <script src="../vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="../js/jq.tablesort.js"></script>
     <!-- End plugin js for this page -->
     <!-- inject:js -->
     <script src="../js/off-canvas.js"></script>
@@ -144,7 +178,14 @@ Hi<!DOCTYPE html>
     <script src="../js/todolist.js"></script>
     <!-- endinject -->
     <!-- Custom js for this page -->
+    <script src="../js/tablesorter.js"></script>
     <script src="../js/dashboard.js"></script>
+    <script>
+      // Show model with event into
+      $('.eventTableTR').on('click', async (event) => {
+        bootstrap.Modal.getOrCreateInstance($(`#model-${event.currentTarget.id}`)).show()
+      });
+    </script>
     <!-- End custom js for this page -->
   </body>
 </html>

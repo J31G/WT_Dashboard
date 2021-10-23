@@ -1,20 +1,22 @@
 const mongoose = require('mongoose');
 
-module.exports = mongoose.model('users', new mongoose.Schema({
+module.exports = mongoose.model('events', new mongoose.Schema({
   name: {
     type: String,
     required: true,
   },
-  email: {
+  reward: {
     type: String,
     required: true,
   },
-  password: {
+  description: {
     type: String,
     required: true,
   },
-  userType: {
+  status: {
     type: String,
+    required: true,
+    default: 'In progress',
   },
   created_date: {
     type: Date,

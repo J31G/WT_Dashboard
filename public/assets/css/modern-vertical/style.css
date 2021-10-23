@@ -35615,6 +35615,7 @@ div.tagsinput span.tag a {
     width: auto;
     padding-left: 15px;
     padding-right: 15px;
+    justify-content: flex-end;
   }
 }
 .navbar .navbar-menu-wrapper .navbar-toggler {
@@ -37167,6 +37168,20 @@ div.tagsinput span.tag a {
   width: 100%;
   -webkit-flex-grow: 1;
   flex-grow: 1;
+}
+
+#eventsDiv::-webkit-scrollbar {
+  width: 12px;
+}
+#eventsDiv::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+#eventsDiv::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
 
 /*# sourceMappingURL=../maps/modern-vertical/style.css.map */
