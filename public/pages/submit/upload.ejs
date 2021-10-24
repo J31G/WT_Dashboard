@@ -4,12 +4,13 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>WolfTeam Admin</title>
+    <title>Halloween | WolfTeam Admin</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
     <!-- endinject -->
     <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="../vendors/dropify/dropify.min.css">
     <!-- End Plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
@@ -18,30 +19,29 @@
     <!-- End layout styles -->
     <link rel="shortcut icon" href="../images/favicon.png" />
   </head>
-  <body>
-    <div class="container-scroller">
-      <!-- partial:../partials/_sidebar -->
-      <%- include('../partials/_sidebar'); %>
-      <!-- partial -->
-      <div class="container-fluid page-body-wrapper">
-        <!-- partial:../partials/_navbar -->
-        <%- include('../partials/_navbar'); %>
-        <!-- partial -->
-        <div class="main-panel" style="min-height: 100vh; margin-top: -24px;">
-          <div class="content-wrapper">
-            <div class="page-header">
-              <h3 class="page-title">Dashboard</h3>
-            </div>
-            <div class="row">
-              Test
+  <body style="background: #000000">
+    <div class="container">
+
+      <div class="container-fluid my-3">
+
+        <form action="/submit/upload" method="post" enctype="multipart/form-data">
+
+          <div class="row">
+            <div class="col-lg grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Event Upload</h4>
+                  <input name="fileUpload" type="file" class="dropify" data-height="400" />
+                  <div class="d-grid gap-2 my-4">
+                    <button id="uploadBtn" type="submit" class="btn btn-primary btn-lg">Upload</button>
+                  </div> 
+                </div>
+              </div>
             </div>
           </div>
-          <!-- content-wrapper ends -->
-          <!-- partial:../partials/_footer -->
-          <%- include('../partials/_footer'); %>
-          <!-- partial -->
-        </div>
-        <!-- main-panel ends -->
+
+      </form>
+
       </div>
       <!-- page-body-wrapper ends -->
     </div>
@@ -50,9 +50,7 @@
     <script src="../vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
-    <script src="../vendors/progressbar.js/progressbar.min.js"></script>
-    <script src="../vendors/jvectormap/jquery-jvectormap.min.js"></script>
-    <script src="../vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="../vendors/dropify/dropify.min.js"></script>
     <!-- End plugin js for this page -->
     <!-- inject:js -->
     <script src="../js/off-canvas.js"></script>
@@ -62,7 +60,7 @@
     <script src="../js/todolist.js"></script>
     <!-- endinject -->
     <!-- Custom js for this page -->
-    <script src="../js/dashboard.js"></script>
+    <script src="../js/dropify.js"></script>
     <!-- End custom js for this page -->
   </body>
 </html>
