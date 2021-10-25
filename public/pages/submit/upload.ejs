@@ -6,18 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Halloween | WolfTeam Admin</title>
     <!-- plugins:css -->
-    <link rel="stylesheet" href="../vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="../../vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
     <!-- endinject -->
     <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="../vendors/dropify/dropify.min.css">
+    <link rel="stylesheet" href="../../vendors/dropify/dropify.min.css">
     <!-- End Plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
     <!-- Layout styles -->
-    <link rel="stylesheet" href="../css/modern-vertical/style.css">
+    <link rel="stylesheet" href="../../css/modern-vertical/style.css">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="../images/favicon.png" />
+    <link rel="shortcut icon" href="../../images/favicon.png" />
   </head>
   <body style="background: #000000">
     <div class="container">
@@ -31,7 +31,15 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Event Upload</h4>
+                  <input class="d-none" type="text" name="userID" value="<%= discordUser.userID %>">
+                  <input class="d-none" type="text" name="username" value="<%= discordUser.username %>">
+                  <input class="d-none" type="text" name="event" value="<%= discordUser.event %>">
                   <input name="fileUpload" type="file" class="dropify" data-height="400" />
+                  <label for="eventIGN" class="form-label mt-3">In-Game Name (IGN)</label>
+                  <input name="ign" type="text" id="eventIGN" class="form-control" aria-describedby="ignHelpBlock" required>
+                  <div id="ignHelpBlock" class="form-text">
+                    Please enter your WolfTeam IGN, so we know where to send the rewards.<br /><br /><strong>Special character:</strong> [ ★ © ® ☆ ✔ ♫ ♪ ✘ ♕ ‡ † ×™▲ ☠ ☩ Δ ♔ ☢ ⍟ ♦ ♣ ♠ ☠ ☣ ♥ ¤ ]
+                  </div>
                   <div class="d-grid gap-2 my-4">
                     <button id="uploadBtn" type="submit" class="btn btn-primary btn-lg">Upload</button>
                   </div> 
@@ -47,20 +55,20 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <script src="../vendors/js/vendor.bundle.base.js"></script>
+    <script src="../../vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
-    <script src="../vendors/dropify/dropify.min.js"></script>
+    <script src="../../vendors/dropify/dropify.min.js"></script>
     <!-- End plugin js for this page -->
     <!-- inject:js -->
-    <script src="../js/off-canvas.js"></script>
-    <script src="../js/hoverable-collapse.js"></script>
-    <script src="../js/misc.js"></script>
-    <script src="../js/settings.js"></script>
-    <script src="../js/todolist.js"></script>
+    <script src="../../js/off-canvas.js"></script>
+    <script src="../../js/hoverable-collapse.js"></script>
+    <script src="../../js/misc.js"></script>
+    <script src="../../js/settings.js"></script>
+    <script src="../../js/todolist.js"></script>
     <!-- endinject -->
     <!-- Custom js for this page -->
-    <script src="../js/dropify.js"></script>
+    <script src="../../js/dropify.js"></script>
     <!-- End custom js for this page -->
   </body>
 </html>

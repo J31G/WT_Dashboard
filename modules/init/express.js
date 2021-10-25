@@ -4,6 +4,7 @@ const flash = require('express-flash');
 const session = require('express-session');
 
 module.exports.initExpress = async (app) => {
+  app.set('trust proxy', 1);
   app.set('view engine', 'ejs');
   app.set('views', './public/pages');
   app.use(express.static('./public/assets'));
@@ -13,6 +14,7 @@ module.exports.initExpress = async (app) => {
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
+    cookie: { secure: true },
   }));
   app.use(passport.initialize());
   app.use(passport.session());

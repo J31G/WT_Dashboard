@@ -2,7 +2,7 @@ module.exports = {
   slash: false,
   testOnly: true,
   description: 'Clear given amount of messages the channel',
-  aliases: ['clear'],
+  aliases: [],
   category: 'General',
   callback: async ({ message, args }) => {
     if (!message.member.permissions.has('MANAGE_MESSAGES')) { message.reply('You do not have permission to do that').then((msg) => setTimeout(() => msg.delete(), 3000)); return ''; }

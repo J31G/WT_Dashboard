@@ -37,7 +37,7 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Create a new daily event</h4>
-                    <form class="forms-sample" action="/events/create-event" method="post">
+                    <form class="forms-sample" action="/events/halloween/create-event" method="post">
                       <div class="form-group row">
                         <label for="eventName" class="col-sm-3 col-form-label">Name</label>
                         <div class="col-sm-9">
@@ -103,6 +103,43 @@
                 </div>
               </div>
             </div>
+            <div class="row">
+              <div class="col-md grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">User Entries</h4>
+
+                    <div id="eventsUserDiv" class="table-sorter-wrapper table-responsive">
+                      <table id="eventsUserTable" class="table table-hover sortable-table">
+                        <thead>
+                          <tr>
+                            <th class="sortStyle">User ID <i class="mdi mdi-chevron-down"></i></th>
+                            <th class="sortStyle">Username <i class="mdi mdi-chevron-down"></i></th>
+                            <th class="sortStyle">IGN <i class="mdi mdi-chevron-down"></i></th>
+                            <th class="sortStyle">Event <i class="mdi mdi-chevron-down"></i></th>
+                            <th class="sortStyle">Created <i class="mdi mdi-chevron-down"></i></th>
+                            <th>URL</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <% eventUsers.forEach(element => { %>
+                            <tr id="<%= element._id %>" style="cursor: pointer;" class="eventUserTableTR">
+                              <td><%= element.userID %></td>
+                              <td><%= element.username %></td>
+                              <td><%= element.IGN %></td>
+                              <td><%= element.event %></td>
+                              <td><%= `${element.created_date.toLocaleDateString('en-GB')} ${element.created_date.toLocaleTimeString('en-GB')}` %></td>
+                              <td><button onclick="window.open('<%= element.URL %>','_blank');" type="button" class="btn btn-outline-secondary btn-icon-text"> Download <i class="mdi mdi-download btn-icon-append"></i>
+                              </button></td>
+                            </tr>
+                          <% }) %>
+                        </tbody>
+                      </table>
+                    </div>
+
+                  </div>
+                </div>
+            </div>
           </div>
 
           <% events.forEach(element => { %>
@@ -146,6 +183,12 @@
                     </div>
                   </div>
                   <div class="modal-footer">
+                    <button onclick="eventDelete({ id: '<%= element._id %>' });" type="button" class="btn btn-danger">Delete</button>
+                    <% if (element.status === 'Completed') { %>
+                      <button onclick="eventChange({ id: '<%= element._id %>', status: '<%= element.status %>' });" type="button" class="btn btn-warning">Re-open</button>
+                    <% } else { %>
+                      <button onclick="eventChange({ id: '<%= element._id %>', status: '<%= element.status %>' });" type="button" class="btn btn-success">Complete</button>
+                    <% } %>
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
                   </div>
                 </div>
@@ -185,6 +228,21 @@
       $('.eventTableTR').on('click', async (event) => {
         bootstrap.Modal.getOrCreateInstance($(`#model-${event.currentTarget.id}`)).show()
       });
+      const eventChange = async ({ id, status }) => {
+        $.post('/events/halloween/event-change', {
+          id,
+          status,
+        }).then(() => {
+          location.reload();
+        });
+      }
+      const eventDelete = async ({ id }) => {
+        $.post('/events/halloween/event-delete', {
+          id
+        }).then(() => {
+          location.reload();
+        });
+      }
     </script>
     <!-- End custom js for this page -->
   </body>
