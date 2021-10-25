@@ -7,6 +7,10 @@ const eventUserUpload = require('../models/eventUserUpload');
 const router = express.Router();
 
 router.get('/upload/:hash', (req, res) => res.render('submit/upload.ejs', { discordUser: urlCrypt.decryptObj(req?.params?.hash) }));
+router.get('/puzzle', (req, res) => {
+  res.status(200);
+  res.redirect('https://www.jigsawplanet.com/?rc=play&pid=0d90d095de94');
+});
 
 router.post('/upload', (req, res, next) => {
   const form = formidable({ multiples: true });
