@@ -29,7 +29,7 @@
             </div>
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item preview-item">
+          <a href="javascript:bootstrap.Modal.getOrCreateInstance($('#changePassword')).show();" class="dropdown-item preview-item">
             <div class="preview-thumbnail">
               <div class="preview-icon bg-dark rounded-circle">
                 <i class="mdi mdi-onepassword  text-info"></i>
@@ -37,17 +37,6 @@
             </div>
             <div class="preview-item-content">
               <p class="preview-subject ellipsis mb-1 text-small">Change Password</p>
-            </div>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item preview-item">
-            <div class="preview-thumbnail">
-              <div class="preview-icon bg-dark rounded-circle">
-                <i class="mdi mdi-calendar-today text-success"></i>
-              </div>
-            </div>
-            <div class="preview-item-content">
-              <p class="preview-subject ellipsis mb-1 text-small">To-do list</p>
             </div>
           </a>
         </div>
@@ -65,14 +54,6 @@
       </a>
     </li>
     <li class="nav-item menu-items">
-      <a class="nav-link" href="/pages/widgets">
-        <span class="menu-icon">
-          <i class="mdi mdi-texture"></i>
-        </span>
-        <span class="menu-title">Widgets</span>
-      </a>
-    </li>
-    <li class="nav-item menu-items">
       <a class="nav-link" data-bs-toggle="collapse" href="#page-layouts" aria-expanded="false" aria-controls="page-layouts">
         <span class="menu-icon">
           <i class="mdi mdi-view-list"></i>
@@ -87,5 +68,48 @@
       </div>
     </li>
 
+    <!--<li class="nav-item menu-items">
+      <a class="nav-link" href="/pages/widgets">
+        <span class="menu-icon">
+          <i class="mdi mdi-texture"></i>
+        </span>
+        <span class="menu-title">Widgets</span>
+      </a>
+    </li> -->
+
   </ul>
 </nav>
+
+<div class="modal fade" id="changePassword" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="changePasswordLabel">Change Password</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form id="reset-password" class="needs-validation" method="post" action="/change-password">
+        <div class="modal-body">
+          <div class="col-sm my-2">
+            <label for="inputPassword" class="form-label">New Password</label>
+            <input name="password" type="password" class="form-control validate" id="inputPassword" required />
+            <div class="invalid-feedback">
+              Passwords do not match
+            </div>
+          </div>
+          <div class="col-sm my-2">
+            <label for="inputPasswordConfirm" class="form-label">Confirm Password</label>
+            <input name="passwordConfirm" type="password" class="form-control" id="inputPasswordComfirm" required />
+            <div class="invalid-feedback">
+              Passwords do not match
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Reset</button>
+        </div>
+        <input class="d-none" name="email" type="text" value="<%= user?.email %>">
+    </form>
+    </div>
+  </div>
+</div>

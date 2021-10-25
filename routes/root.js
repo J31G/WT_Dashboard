@@ -1,5 +1,8 @@
 const express = require('express');
 const passport = require('passport');
+const bcrypt = require('bcryptjs');
+const userDB = require('../models/users');
+const { initialisePassport } = require('../modules/init/passport');
 
 const router = express.Router();
 
@@ -24,6 +27,14 @@ router.post('/login', checkNotAuth, passport.authenticate('local', {
   failureFlash: true,
 }));
 router.post('/logout', checkAuth, (req, res) => {
+  req.logOut();
+  res.redirect('/login');
+});
+router.post('/change-password', async (req, res) => {
+  await userDB.findOneAndUpdate({ email: req?.body?.email }, {
+    password: await bcrypt.hash(req?.body?.password, 10),
+  }, { upsert: true });
+  await initialisePassport();
   req.logOut();
   res.redirect('/login');
 });

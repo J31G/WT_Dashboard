@@ -1,6 +1,5 @@
 // Global Imports
 const express = require('express');
-const passport = require('passport');
 const mongoose = require('mongoose');
 const DiscordJS = require('discord.js');
 require('dotenv').config();
@@ -10,9 +9,8 @@ const rootRoute = require('./routes/root');
 const eventsRoute = require('./routes/events');
 const submitRoute = require('./routes/submit');
 const errorRoute = require('./routes/error');
-const usersDB = require('./models/users');
 const { initExpress } = require('./modules/init/express');
-const { initialise: initialisePassport } = require('./modules/init/passport');
+const { initialisePassport } = require('./modules/init/passport');
 const { onDiscordReady } = require('./modules/discord/events/onReady');
 const { onDiscordMessage } = require('./modules/discord/events/onMessage');
 const { onDiscordInteraction } = require('./modules/discord/events/onInteractionCreate');
@@ -34,16 +32,8 @@ const discordClient = new DiscordJS.Client({
 // DB connect
 mongoose.connect(process.env.MONGO_URI).catch((err) => console.error(err));
 
-// Get out users list from DB and init passport
-(async () => {
-  const users = await usersDB.find({});
-
-  initialisePassport(
-    passport,
-    (email) => users.find((user) => user.email === email),
-    (id) => users.find((user) => user.id === id),
-  );
-})();
+// Init Passport
+initialisePassport();
 
 // Express Setup
 const app = express();

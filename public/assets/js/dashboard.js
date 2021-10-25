@@ -258,4 +258,14 @@ $(document).ready(() => {
   if ($(location).attr('pathname') === '/') {
     $('#dashboard').addClass('active');
   }
+
+  $('#reset-password').on('submit', (e) => {
+    if ($('#inputPassword').val() !== $('#inputPasswordComfirm').val()) {
+      e.preventDefault();
+      $('#reset-password .invalid-feedback').css("display", "block");
+      return;
+    }
+    $( "#reset-password" ).submit();
+  });
+
 });
