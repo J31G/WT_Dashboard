@@ -24,15 +24,13 @@ router.post('/upload', (req, res, next) => {
     const blockBlobClient = containerClient.getBlockBlobClient(files.fileUpload.name);
 
     blockBlobClient.uploadFile(files.fileUpload.path)
-      .then(() => {
+      .then(async () => {
         console.log(`File uploaded: https://cdn.wolfteam.info/wolfteam/events/halloween/${fields?.userID}/${files.fileUpload.name}`);
-        eventUserUpload.create({
-          userID: fields?.userID,
-          username: fields?.username,
+        await eventUserUpload.findOneAndUpdate({ userID: fields?.userID, event: fields?.event }, {
           IGN: fields?.ign,
           URL: `https://cdn.wolfteam.info/wolfteam/events/halloween/${fields?.userID}/${files.fileUpload.name}`,
-          event: fields?.event,
-        });
+          upload_date: new Date(),
+        }, { upsert: true });
       })
       .catch((error) => console.error(error));
 
@@ -41,7 +39,7 @@ router.post('/upload', (req, res, next) => {
     console.log(files.fileUpload.type); */
 
     res.status(200);
-    res.redirect('https://wolfteam.aeriagames.com/');
+    res.redirect('https://i.pinimg.com/564x/df/e1/0d/dfe10d8526fed5753614709613af8ee2.jpg');
   });
 });
 

@@ -37170,15 +37170,15 @@ div.tagsinput span.tag a {
   flex-grow: 1;
 }
 
-#eventsDiv::-webkit-scrollbar {
+.fancy-toolbar::-webkit-scrollbar {
   width: 12px;
 }
-#eventsDiv::-webkit-scrollbar-track {
+.fancy-toolbar::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
 }
-#eventsDiv::-webkit-scrollbar-thumb {
+.fancy-toolbar::-webkit-scrollbar-thumb {
   border-radius: 10px;
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);

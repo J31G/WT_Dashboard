@@ -69,7 +69,7 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Running events</h4>
-                    <div id="eventsDiv" class="table-sorter-wrapper table-responsive">
+                    <div id="eventsDiv" class="table-sorter-wrapper table-responsive fancy-toolbar">
                       <table id="eventsTable" class="table table-hover sortable-table">
                         <thead>
                           <tr>
@@ -109,7 +109,7 @@
                   <div class="card-body">
                     <h4 class="card-title">User Entries</h4>
 
-                    <div id="eventsUserDiv" class="table-sorter-wrapper table-responsive">
+                    <div id="eventsUserDiv" class="table-sorter-wrapper table-responsive fancy-toolbar">
                       <table id="eventsUserTable" class="table table-hover sortable-table">
                         <thead>
                           <tr>
@@ -118,6 +118,7 @@
                             <th class="sortStyle">IGN <i class="mdi mdi-chevron-down"></i></th>
                             <th class="sortStyle">Event <i class="mdi mdi-chevron-down"></i></th>
                             <th class="sortStyle">Created <i class="mdi mdi-chevron-down"></i></th>
+                            <th class="sortStyle">Uploaded <i class="mdi mdi-chevron-down"></i></th>
                             <th>URL</th>
                           </tr>
                         </thead>
@@ -129,6 +130,7 @@
                               <td><%= element.IGN %></td>
                               <td><%= element.event %></td>
                               <td><%= `${element.created_date.toLocaleDateString('en-GB')} ${element.created_date.toLocaleTimeString('en-GB')}` %></td>
+                              <td><%= `${element.upload_date.toLocaleDateString('en-GB')} ${element.upload_date.toLocaleTimeString('en-GB')}` %></td>
                               <td><button onclick="window.open('<%= element.URL %>','_blank');" type="button" class="btn btn-outline-secondary btn-icon-text"> Download <i class="mdi mdi-download btn-icon-append"></i>
                               </button></td>
                             </tr>

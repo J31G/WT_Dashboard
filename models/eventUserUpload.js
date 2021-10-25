@@ -11,11 +11,9 @@ module.exports = mongoose.model('eventUserUpload', new mongoose.Schema({
   },
   IGN: {
     type: String,
-    required: true,
   },
   URL: {
     type: String,
-    required: true,
   },
   event: {
     type: String,
@@ -25,5 +23,8 @@ module.exports = mongoose.model('eventUserUpload', new mongoose.Schema({
     type: Date,
     required: true,
     default: Date.now,
+  },
+  upload_date: {
+    type: Date,
   },
 }));

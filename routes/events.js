@@ -14,7 +14,7 @@ const checkAuth = (req, res, next) => {
 router.get('/halloween', checkAuth, async (req, res) => res.render('events/halloween.ejs', {
   user: req?.user,
   events: await eventsDB.find({}).sort({ created_date: -1 }),
-  eventUsers: await eventUserDB.find({}).sort({ created_date: -1 }),
+  eventUsers: await eventUserDB.find({ upload_date: { $ne: null } }).sort({ created_date: -1 }),
 }));
 
 // POST
