@@ -19,20 +19,22 @@ module.exports.onDiscordInteraction = async (discordClient, interaction) => {
   const event = allEvents[Math.floor(Math.random() * allEvents.length)];
   const year = new Date();
 
-  // Create URL
-  const data = {
-    userID: interaction.user.id,
-    username: interaction.user.username,
-    event: event.name,
-  };
-  const base64 = urlCrypt.cryptObj(data);
-  const url = `https://apps.wolfteam.info/submit/upload/${base64}`;
-
   const language = interaction.customId.substring(16).toUpperCase();
   const eventName = await translate(event.name, language);
   const eventDescription = await translate(event.description, language);
   const eventReward = await translate(event.reward, language);
   const timeRemaining = moment().startOf('day').add(1, 'days').countdown();
+
+  // Create URL
+  const data = {
+    userID: interaction.user.id,
+    username: interaction.user.username,
+    event: event.name,
+    language,
+  };
+
+  const base64 = urlCrypt.cryptObj(data);
+  const url = `https://apps.wolfteam.info/submit/upload/${base64}`;
 
   const embed = new MessageEmbed()
     .setColor(3447003)
@@ -51,6 +53,5 @@ module.exports.onDiscordInteraction = async (discordClient, interaction) => {
         .setStyle('LINK'),
     );
 
-  // console.log(allEvents);
   interaction.reply({ embeds: [embed], components: [row], ephemeral: true });
 };

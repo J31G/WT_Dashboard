@@ -30,16 +30,43 @@
             <div class="col-lg grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Event Upload</h4>
+
+                  <% if (discordUser.language === 'FR') { %>
+                    <h4 class="card-title">Téléchargement de l'événement</h4>
+                  <% } else if (discordUser.language === 'DE') { %>
+                    <h4 class="card-title">Ereignis-Upload</h4>
+                  <% } else { %>
+                    <h4 class="card-title">Event Upload</h4>
+                  <% } %>
+
+                  <!-- PLACEHOLDERS FOR OUR DISCORD DATA -->
                   <input class="d-none" type="text" name="userID" value="<%= discordUser.userID %>">
                   <input class="d-none" type="text" name="username" value="<%= discordUser.username %>">
                   <input class="d-none" type="text" name="event" value="<%= discordUser.event %>">
+
+                  <!-- FILE UPLOADER -->
                   <input name="fileUpload" type="file" class="dropify" data-height="400" />
-                  <label for="eventIGN" class="form-label mt-3">In-Game Name (IGN)</label>
-                  <input name="ign" type="text" id="eventIGN" class="form-control" aria-describedby="ignHelpBlock" required>
-                  <div id="ignHelpBlock" class="form-text">
-                    Please enter your WolfTeam IGN, so we know where to send the rewards.<br /><br /><strong>Special character:</strong> [ ★ © ® ☆ ✔ ♫ ♪ ✘ ♕ ‡ † ×™▲ ☠ ☩ Δ ♔ ☢ ⍟ ♦ ♣ ♠ ☠ ☣ ♥ ¤ ]
-                  </div>
+
+                  <% if (discordUser.language === 'FR') { %>
+                    <label for="eventIGN" class="form-label mt-3">Nom dans le jeu (IGN)</label>
+                    <input name="ign" type="text" id="eventIGN" class="form-control" aria-describedby="ignHelpBlock" required>
+                    <div id="ignHelpBlock" class="form-text">
+                      Veuillez entrer votre IGN WolfTeam, afin que nous sachions où envoyer les récompenses.<br /><br /><strong>Caractères spéciaux:</strong> [ ★ © ® ☆ ✔ ♫ ♪ ✘ ♕ ‡ † ×™▲ ☠ ☩ Δ ♔ ☢ ⍟ ♦ ♣ ♠ ☠ ☣ ♥ ¤ ]
+                    </div>
+                  <% } else if (discordUser.language === 'DE') { %>
+                    <label for="eventIGN" class="form-label mt-3">Nom dans le jeu (IGN)</label>
+                    <input name="ign" type="text" id="eventIGN" class="form-control" aria-describedby="ignHelpBlock" required>
+                    <div id="ignHelpBlock" class="form-text">
+                      Bitte gib deinen WolfTeam IGN ein, damit wir wissen, wohin wir die Belohnungen schicken sollen.<br /><br /><strong>Besondere Zeichen:</strong> [ ★ © ® ☆ ✔ ♫ ♪ ✘ ♕ ‡ † ×™▲ ☠ ☩ Δ ♔ ☢ ⍟ ♦ ♣ ♠ ☠ ☣ ♥ ¤ ]
+                    </div>
+                  <% } else { %>
+                    <label for="eventIGN" class="form-label mt-3">In-Game Name (IGN)</label>
+                    <input name="ign" type="text" id="eventIGN" class="form-control" aria-describedby="ignHelpBlock" required>
+                    <div id="ignHelpBlock" class="form-text">
+                      Please enter your WolfTeam IGN, so we know where to send the rewards.<br /><br /><strong>Special character:</strong> [ ★ © ® ☆ ✔ ♫ ♪ ✘ ♕ ‡ † ×™▲ ☠ ☩ Δ ♔ ☢ ⍟ ♦ ♣ ♠ ☠ ☣ ♥ ¤ ]
+                    </div>
+                  <% } %>
+
                   <div class="d-grid gap-2 my-4">
                     <button id="uploadBtn" type="submit" class="btn btn-primary btn-lg">Upload</button>
                   </div> 
