@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Team Gamigo | WolfTeam Admin</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="../vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+    <!-- End Plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="../css/modern-vertical/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="../images/favicon.png" />
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:../partials/_sidebar -->
+      <%- include('../../partials/_sidebar'); %>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:../partials/_navbar -->
+        <%- include('../../partials/_navbar'); %>
+        <!-- partial -->
+        <div class="main-panel min-vh-100">
+          <div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title">Team Gamigo</h3>
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item">Reports</li>
+                  <li class="breadcrumb-item active" aria-current="page">Team Gamigo</li>
+                </ol>
+              </nav>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Team Gamigo</h4>
+                <p>Below is a report of all the users within the WT discord that have used the tag <span style="color: orange;">@TeamGamigo</span>.</p>
+                <div class="row">
+                  <div class="col-12">
+                    <div class="table-responsive">
+                      <table id="order-listing" class="table">
+                        <thead>
+                          <tr>
+                            <th>Discord ID</th>
+                            <th>Username</th>
+                            <th>Created</th>
+                            <th>Message</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <% gamigoTag.forEach(user => { %>
+                            <tr>
+                              <td><%= user.discord_user_id %></td>
+                              <td><%= user.discord_username %></td>
+                              <td><%= `${user.date_time.toLocaleDateString('en-GB')} ${user.date_time.toLocaleTimeString('en-GB')}` %></td>
+                              <td style="word-wrap: break-word;min-width: 200px;max-width: 200px;white-space:normal;"><%= user.discord_message %></td>
+                            </tr>
+                          <% }) %>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:../partials/_footer -->
+          <%- include('../../partials/_footer'); %>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="../vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="../vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../js/off-canvas.js"></script>
+    <script src="../js/hoverable-collapse.js"></script>
+    <script src="../js/misc.js"></script>
+    <script src="../js/settings.js"></script>
+    <script src="../js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="../js/dashboard.js"></script>
+    <script src="../js/data-table.js"></script>
+    <!-- End custom js for this page -->
+  </body>
+</html>

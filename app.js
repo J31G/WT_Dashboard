@@ -8,6 +8,7 @@ require('dotenv').config();
 const rootRoute = require('./routes/root');
 const eventsRoute = require('./routes/events');
 const submitRoute = require('./routes/submit');
+const reportsRoute = require('./routes/reports');
 const errorRoute = require('./routes/error');
 const { initExpress } = require('./modules/init/express');
 const { initialisePassport } = require('./modules/init/passport');
@@ -43,6 +44,7 @@ initExpress(app);
 app.use('/', rootRoute);
 app.use('/events', eventsRoute);
 app.use('/submit', submitRoute);
+app.use('/reports', reportsRoute);
 app.use('*', errorRoute);
 
 // Discord Events
