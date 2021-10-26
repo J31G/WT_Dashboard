@@ -61,7 +61,7 @@
                               <td><%= user.discord_user_id %></td>
                               <td><%= user.discord_username %></td>
                               <td><%= `${user.date_time.toLocaleDateString('en-GB')} ${user.date_time.toLocaleTimeString('en-GB')}` %></td>
-                              <td style="word-wrap: break-word;min-width: 200px;max-width: 200px;white-space:normal;"><%= user.discord_message %></td>
+                              <td class="table-messages" style="word-wrap: break-word;min-width: 200px;max-width: 200px;white-space:normal;"><%= user.discord_message %></td>
                             </tr>
                           <% }) %>
                         </tbody>
@@ -99,6 +99,11 @@
     <!-- Custom js for this page -->
     <script src="../js/dashboard.js"></script>
     <script src="../js/data-table.js"></script>
+    <script>
+      document.querySelectorAll('.table-messages').forEach((a) => {
+        a.innerHTML = a.innerText.replaceAll('<@&829731272716189746>', '<span style="font-weight:bold;">@TeamGamigo</span>');
+      });
+    </script>
     <!-- End custom js for this page -->
   </body>
 </html>
