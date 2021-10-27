@@ -2,14 +2,7 @@
   'use strict';
   $(function() {
     $('#order-listing').DataTable({
-      "aLengthMenu": [
-        [5, 10, 15, -1],
-        [5, 10, 15, "All"]
-      ],
-      "iDisplayLength": 10,
-      "language": {
-        search: ""
-      }
+      "bSort" : false
     });
     $('#order-listing').each(function() {
       var datatable = $(this);

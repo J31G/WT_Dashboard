@@ -60,7 +60,7 @@
                             <tr>
                               <td><%= user.discord_user_id %></td>
                               <td><%= user.discord_username %></td>
-                              <td><%= `${user.date_time.toLocaleDateString('en-GB')} ${user.date_time.toLocaleTimeString('en-GB')}` %></td>
+                              <td><%= `${user.date_time.getFullYear()}-${user.date_time.getMonth() + 1}-${user.date_time.getDate()} ${user.date_time.getHours()}:${user.date_time.getMinutes()}:${user.date_time.getSeconds()}` %></td>
                               <td class="table-messages" style="word-wrap: break-word;min-width: 200px;max-width: 200px;white-space:normal;"><%= user.discord_message %></td>
                             </tr>
                           <% }) %>
@@ -101,7 +101,12 @@
     <script src="../js/data-table.js"></script>
     <script>
       document.querySelectorAll('.table-messages').forEach((a) => {
-        a.innerHTML = a.innerText.replaceAll('<@&829731272716189746>', '<span style="font-weight:bold;">@TeamGamigo</span>');
+        a.innerHTML = a.innerText
+          .replaceAll('<@&829731272716189746>', '<strong>@TeamGamigo</strong>')
+          .replaceAll('<@&324578350486257674>', '<strong>@Game Masters</strong>')
+          .replaceAll('<@&882998563796312095>', '<strong>@Novice Game Master</strong>')
+          .replaceAll('<@&453224804871569412>', '<strong>@EN</strong>')
+          .replaceAll('<@256090326328934400>', '<strong>@HiodunG</strong>');
       });
     </script>
     <!-- End custom js for this page -->
