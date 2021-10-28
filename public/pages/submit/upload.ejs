@@ -45,7 +45,7 @@
                   <input class="d-none" type="text" name="event" value="<%= discordUser.event %>">
 
                   <!-- FILE UPLOADER -->
-                  <input name="fileUpload" type="file" class="dropify" data-height="400" data-allowed-file-extensions='["png", "jpg", "gif", "jpeg"]' />
+                  <input name="fileUpload" type="file" class="dropify" data-height="400" data-allowed-file-extensions='["png", "jpg", "gif", "jpeg"]' required />
 
                   <% if (discordUser.language === 'FR') { %>
                     <label for="eventIGN" class="form-label mt-3">Nom dans le jeu (IGN)</label>
