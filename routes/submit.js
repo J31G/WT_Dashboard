@@ -21,18 +21,20 @@ router.post('/upload', (req, res, next) => {
       return;
     }
 
+    const filename = files.fileUpload.name || `upload-${new Date()}`;
+
     // Upload files to Azure
     const blobServiceClient = BlobServiceClient
       .fromConnectionString(process.env.AZURE_STORAGE_CONNECTION_STRING);
     const containerClient = blobServiceClient.getContainerClient(`wolfteam/events/halloween/${fields?.userID}`);
-    const blockBlobClient = containerClient.getBlockBlobClient(files.fileUpload.name);
+    const blockBlobClient = containerClient.getBlockBlobClient(filename);
 
     blockBlobClient.uploadFile(files.fileUpload.path)
       .then(async () => {
-        console.log(`File uploaded: https://cdn.wolfteam.info/wolfteam/events/halloween/${fields?.userID}/${files.fileUpload.name}`);
+        console.log(`File uploaded: https://cdn.wolfteam.info/wolfteam/events/halloween/${fields?.userID}/${filename}`);
         await eventUserUpload.findOneAndUpdate({ userID: fields?.userID, event: fields?.event }, {
           IGN: fields?.ign,
-          URL: `https://cdn.wolfteam.info/wolfteam/events/halloween/${fields?.userID}/${files.fileUpload.name}`,
+          URL: `https://cdn.wolfteam.info/wolfteam/events/halloween/${fields?.userID}/${filename}`,
           upload_date: new Date(),
         }, { upsert: true });
       })
