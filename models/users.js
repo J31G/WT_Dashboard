@@ -16,6 +16,9 @@ module.exports = mongoose.model('users', new mongoose.Schema({
   userType: {
     type: String,
   },
+  discordID: {
+    type: String,
+  },
   created_date: {
     type: Date,
     required: true,

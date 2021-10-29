@@ -9,6 +9,7 @@ const rootRoute = require('./routes/root');
 const eventsRoute = require('./routes/events');
 const submitRoute = require('./routes/submit');
 const reportsRoute = require('./routes/reports');
+const listsRoute = require('./routes/lists');
 const errorRoute = require('./routes/error');
 const { initExpress } = require('./modules/init/express');
 const { initialisePassport } = require('./modules/init/passport');
@@ -31,7 +32,9 @@ const discordClient = new DiscordJS.Client({
 });
 
 // DB connect
-mongoose.connect(process.env.MONGO_URI).catch((err) => console.error(err));
+mongoose.connect(process.env.MONGO_URI, {
+  dbName: 'WolfTeam',
+}).catch((err) => console.error(err));
 
 // Init Passport
 initialisePassport();
@@ -44,6 +47,7 @@ initExpress(app);
 app.use('/', rootRoute);
 app.use('/events', eventsRoute);
 app.use('/submit', submitRoute);
+app.use('/lists', listsRoute);
 app.use('/reports', reportsRoute);
 app.use('*', errorRoute);
 

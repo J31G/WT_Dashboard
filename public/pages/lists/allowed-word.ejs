@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Allowed Words | WolfTeam Admin</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="../vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+    <!-- End Plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="../css/modern-vertical/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="../images/favicon.png" />
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:../partials/_sidebar -->
+      <%- include('../../partials/_sidebar'); %>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:../partials/_navbar -->
+        <%- include('../../partials/_navbar'); %>
+        <!-- partial -->
+        <div class="main-panel min-vh-100">
+          <div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title">Allowed Words</h3>
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item">Lists</li>
+                  <li class="breadcrumb-item active" aria-current="page">Allowed Words</li>
+                </ol>
+              </nav>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Allowed Words</h4>
+                <p>These are the allowed words that the language detection bot will not block. The bot should only stop Turkish, although it often gets confused at short sentences, so adding the word here will solve the issue. </p>
+                <div class="row">
+                  <div class="col-12">
+                    <div class="table-responsive">
+                      <table id="order-listing" class="table">
+                        <thead>
+                          <tr>
+                            <th>ID</th>
+                            <th>Word</th>
+                            <th>Added By</th>
+                            <th>Created</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <% allowedWords.forEach((url) => { %>
+
+                            <tr>
+                              <td><%= url._id %></td>
+                              <td><%= url.word %></td>
+                              <td class="added-by"><%= allUsers?.filter((u) => u.discordID == url.added_by)[0]?.name || 'Unknown' %></td>
+                              <td><%= url.created_date.toLocaleString('en-GB') %></td>
+                            </tr>
+
+                          <% }); %>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:../partials/_footer -->
+          <%- include('../../partials/_footer'); %>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="../vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="../vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../js/off-canvas.js"></script>
+    <script src="../js/hoverable-collapse.js"></script>
+    <script src="../js/misc.js"></script>
+    <script src="../js/settings.js"></script>
+    <script src="../js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="../js/dashboard.js"></script>
+    <script src="../js/data-table.js"></script>
+    <!-- <script>
+      document.querySelectorAll('.added-by').forEach((a) => {
+        a.innerHTML = a.innerText
+          .replaceAll('570240307569098752', '[GM] Big™');
+      });
+    </script> -->
+    <!-- End custom js for this page -->
+  </body>
+</html>
