@@ -4,6 +4,11 @@ const bcrypt = require('bcryptjs');
 const userDB = require('../models/users');
 const { initialisePassport } = require('../modules/init/passport');
 
+const eventsRoute = require('./events');
+const submitRoute = require('./submit');
+const reportsRoute = require('./reports');
+const listsRoute = require('./lists');
+
 const router = express.Router();
 
 // Auth Functions
@@ -15,6 +20,12 @@ const checkNotAuth = (req, res, next) => {
   if (!req.isAuthenticated()) return next();
   return res.redirect('/');
 };
+
+// Other routes
+router.use('/events', eventsRoute);
+router.use('/submit', submitRoute);
+router.use('/lists', listsRoute);
+router.use('/reports', reportsRoute);
 
 // GET
 router.get('/', checkAuth, async (req, res) => res.render('index.ejs', { user: req?.user }));
