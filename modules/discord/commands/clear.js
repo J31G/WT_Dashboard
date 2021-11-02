@@ -1,3 +1,5 @@
+const discordLogs = require('../../../models/discordLogs');
+
 module.exports = {
   slash: false,
   testOnly: true,
@@ -28,10 +30,20 @@ module.exports = {
     }
 
     // Now delete the messages
-    message.channel.bulkDelete(!user ? amount : messageIDs, true)
-      .then((messages) => message.channel.send(`${messages.size} Messages deleted`))
+    message.channel.bulkDelete(!user ? amount + 1 : messageIDs, true)
+      .then((messages) => message.channel.send(`${messages.size - 1} Messages deleted`))
       .then((msg) => setTimeout(() => msg.delete(), 3000))
       .catch(console.error);
+
+    // Log to DB
+    await discordLogs.create({
+      discordID: message.author.id,
+      discordUsername: message?.author?.username,
+      logEvent: 'Clear',
+      logReason: 'Admin Request',
+      message: message?.content,
+    });
+
     return '';
   },
 };

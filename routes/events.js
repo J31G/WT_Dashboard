@@ -1,6 +1,7 @@
 const express = require('express');
 const eventsDB = require('../models/events');
 const eventUserDB = require('../models/eventUserUpload');
+const userDB = require('../models/users');
 
 const router = express.Router();
 
@@ -13,6 +14,7 @@ const checkAuth = (req, res, next) => {
 // GET
 router.get('/halloween', checkAuth, async (req, res) => res.render('events/halloween.ejs', {
   user: req?.user,
+  allUsers: await userDB.find(),
   events: await eventsDB.find({}).sort({ created_date: -1 }),
   eventUsers: await eventUserDB.find({ upload_date: { $ne: null } }).sort({ created_date: -1 }),
 }));

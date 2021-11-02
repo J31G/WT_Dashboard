@@ -13,6 +13,7 @@ const checkAuth = (req, res, next) => {
 
 router.get('/banned-url', checkAuth, async (req, res) => res.render('lists/banned-url.ejs', {
   user: req?.user,
+  allUsers: await dashboardUsers.find(),
   bannedURL: await bannedURL.find(),
 }));
 router.get('/allowed-word', checkAuth, async (req, res) => res.render('lists/allowed-word.ejs', {

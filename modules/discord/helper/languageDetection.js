@@ -1,5 +1,6 @@
 const DetectLanguage = require('detectlanguage');
 const allowedList = require('../../../models/allowedWordList');
+const discordLogs = require('../../../models/discordLogs');
 require('dotenv').config();
 
 module.exports.languageDetection = async (message) => {
@@ -17,6 +18,15 @@ module.exports.languageDetection = async (message) => {
 
       // if message contains an allowed word, do not remove it
       if (allowedWords.some((w) => message.content.toLowerCase().includes(w.word))) return;
+
+      // Save to log DB
+      await discordLogs.create({
+        discordID: message.author.id,
+        discordUsername: message?.author?.username,
+        logEvent: 'Warn',
+        logReason: 'Turkish Detection',
+        message: message?.content,
+      });
 
       setTimeout(() => message.delete(), 500);
       const msg = await message.reply({ content: 'Turkish is not a supported language for Wolfteam Aeria. Please stick to English, German, or French.\n\nIf you are after the Turkish Discord, you can find it here: <https://joy.ac/WolfteamDiscord>' });

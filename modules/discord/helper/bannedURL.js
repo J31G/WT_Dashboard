@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const bannedURL = require('../../../models/bannedURL');
+const discordLogs = require('../../../models/discordLogs');
 require('dotenv').config();
 
 module.exports.bannedURLDetection = async (message, client) => {
@@ -28,6 +29,15 @@ module.exports.bannedURLDetection = async (message, client) => {
 
     // Find the user
     const discordUser = await guild.members.fetch(message.author.id);
+
+    // Log in DB
+    await discordLogs.create({
+      discordID: message.author.id,
+      discordUsername: message?.author?.username,
+      logEvent: 'Muted',
+      logReason: 'Banned URL',
+      message: message?.content,
+    });
 
     // Now give the user the roles
     discordUser.roles.add(mutedRole.id);

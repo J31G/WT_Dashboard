@@ -67,14 +67,14 @@
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
           <h6 class="p-3 mb-0">Actions</h6>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item preview-item">
+          <a class="dropdown-item preview-item" href="javascript:bootstrap.Modal.getOrCreateInstance($('#settingPopup')).show();">
             <div class="preview-thumbnail">
               <div class="preview-icon bg-dark rounded-circle">
                 <i class="mdi mdi-settings text-success"></i>
               </div>
             </div>
             <div class="preview-item-content">
-              <p class="preview-subject mb-1">Settings</p>
+              <p class="preview-subject mb-1">Manage Users</p>
             </div>
           </a>
           <div class="dropdown-divider"></div>
@@ -95,4 +95,92 @@
       <span class="mdi mdi-format-line-spacing"></span>
     </button>
   </div>
+
 </nav>
+
+<div class="modal fade" id="settingPopup" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="settingPopupLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="settingLabel">Manage Users</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form method="post" action="">
+
+        <div class="modal-body">
+          
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% allUsers.forEach((u) => { %>
+                  <tr>
+                    <td><%= u.name %></td>
+                    <td><%= u.email %></td>
+                    <td></td>
+                  </tr>
+                <% }); %>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info" data-bs-target="#newUser" data-bs-toggle="modal">Add New</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="newUser" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="newUserLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="settingLabel">New User</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form method="post" action="">
+
+        <div class="modal-body">
+
+          <div class="mb-3 row">
+            <label for="newName" class="col-sm-2 col-form-label">Name</label>
+            <div class="col-sm-10">
+              <input name="newName" type="text" class="form-control-plaintext" id="newName" />
+            </div>
+          </div>
+
+          <div class="mb-3 row">
+            <label for="newEmail" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+              <input name="newEmail" type="email" class="form-control-plaintext" id="newEmail" />
+            </div>
+          </div>
+
+          <div class="mb-3 row">
+            <label for="newPassword" class="col-sm-2 col-form-label">Pass</label>
+            <div class="col-sm-10">
+              <input name="newPassword" type="text" readonly class="form-control-plaintext" id="newPassword" value="Abcd1234" />
+            </div>
+            <div class="form-text"><small>The Password can be changed once logged in using the three dots by your name in the left nav bar.</small></div>
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+    </form>
+    </div>
+  </div>
+</div>

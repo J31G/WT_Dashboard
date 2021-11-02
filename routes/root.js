@@ -8,6 +8,7 @@ const eventsRoute = require('./events');
 const submitRoute = require('./submit');
 const reportsRoute = require('./reports');
 const listsRoute = require('./lists');
+const logsRoute = require('./logs');
 
 const router = express.Router();
 
@@ -26,9 +27,10 @@ router.use('/events', eventsRoute);
 router.use('/submit', submitRoute);
 router.use('/lists', listsRoute);
 router.use('/reports', reportsRoute);
+router.use('/logs', logsRoute);
 
 // GET
-router.get('/', checkAuth, async (req, res) => res.render('index.ejs', { user: req?.user }));
+router.get('/', checkAuth, async (req, res) => res.render('index.ejs', { user: req?.user, allUsers: await userDB.find() }));
 router.get('/login', checkNotAuth, (req, res) => res.render('login.ejs'));
 
 // POST

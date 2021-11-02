@@ -1,5 +1,5 @@
 const express = require('express');
-const gamigoTag = require('../models/taggedTeamGamigo');
+const discordLogs = require('../models/discordLogs');
 const userDB = require('../models/users');
 
 const router = express.Router();
@@ -10,10 +10,10 @@ const checkAuth = (req, res, next) => {
   return res.redirect('/login');
 };
 
-router.get('/team-gamigo', checkAuth, async (req, res) => res.render('reports/team-gamigo.ejs', {
+router.get('/discord', checkAuth, async (req, res) => res.render('logs/discord.ejs', {
   user: req?.user,
   allUsers: await userDB.find(),
-  gamigoTag: await gamigoTag.find().sort({ date_time: -1 }),
+  logs: await discordLogs.find().sort({ createdDate: -1 }),
 }));
 
 module.exports = router;
