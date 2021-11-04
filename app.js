@@ -1,9 +1,7 @@
-// Global Imports
-const mongoose = require('mongoose');
 require('dotenv').config();
 
 // DB connect
-mongoose.connect(process.env.MONGO_URI, {
+require('mongoose').connect(process.env.MONGO_URI, {
   dbName: 'WolfTeam',
 }).catch((err) => console.error(err));
 
