@@ -1,4 +1,6 @@
+const moment = require('moment');
 const discordTag = require('../../../models/taggedTeamGamigo');
+const messageCount = require('../../../models/messageCount');
 const { languageDetection } = require('../helper/languageDetection');
 const { bannedURLDetection } = require('../helper/bannedURL');
 
@@ -22,4 +24,9 @@ module.exports.onDiscordMessage = async (discordClient, message) => {
     const msg = await message.reply({ content: 'Please only tag Team Gamigo for game emergencies! Continuing to tag the group will result in a ban. \n\nIf you are after game support, please submit a ticket: https://www.aeriagames.com/contact' });
     setTimeout(() => msg.delete(), 10000);
   }
+
+  // Log message count
+  await messageCount.findOneAndUpdate({
+    date_time: { $gte: moment().startOf('day') },
+  }, { $inc: { count: 1 } }, { upsert: true, new: true });
 };

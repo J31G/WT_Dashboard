@@ -1,8 +1,11 @@
 const express = require('express');
 const passport = require('passport');
 const bcrypt = require('bcryptjs');
+const moment = require('moment');
 const userDB = require('../models/users');
+const messageCountDB = require('../models/messageCount');
 const { initialisePassport } = require('../modules/init/passport');
+const { queryStats } = require('../modules/init/discord');
 
 const eventsRoute = require('./events');
 const submitRoute = require('./submit');
@@ -30,7 +33,13 @@ router.use('/reports', reportsRoute);
 router.use('/logs', logsRoute);
 
 // GET
-router.get('/', checkAuth, async (req, res) => res.render('index.ejs', { user: req?.user, allUsers: await userDB.find() }));
+router.get('/', checkAuth, async (req, res) => res.render('index.ejs', {
+  user: req?.user,
+  allUsers: await userDB.find(),
+  discordStats: await queryStats(),
+  msgCount: await messageCountDB.findOne({ date_time: { $gte: moment().startOf('day') } }),
+  msgCountYesterday: await messageCountDB.findOne({ date_time: { $gte: moment().subtract(1, 'day').startOf('day') } }),
+}));
 router.get('/login', checkNotAuth, (req, res) => res.render('login.ejs'));
 
 // POST
