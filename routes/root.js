@@ -11,6 +11,7 @@ const eventsRoute = require('./events');
 const submitRoute = require('./submit');
 const reportsRoute = require('./reports');
 const listsRoute = require('./lists');
+const faqsRoute = require('./faqs');
 const logsRoute = require('./logs');
 
 const router = express.Router();
@@ -29,6 +30,7 @@ const checkNotAuth = (req, res, next) => {
 router.use('/events', eventsRoute);
 router.use('/submit', submitRoute);
 router.use('/lists', listsRoute);
+router.use('/faqs', faqsRoute);
 router.use('/reports', reportsRoute);
 router.use('/logs', logsRoute);
 
