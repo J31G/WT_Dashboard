@@ -47,6 +47,4 @@ module.exports.questions = async (discordClient, interaction) => {
   if (language === 'FR') row.components[2].disabled = true;
 
   await interaction?.message.edit({ embeds: [embed], components: [row] });
-
-  return '';
 };
