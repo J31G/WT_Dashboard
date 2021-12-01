@@ -58,20 +58,33 @@
                       <table id="order-listing" class="table">
                         <thead>
                           <tr>
-                            <th>ID</th>
+                            <th hidden>ID</th>
                             <th>Key Words</th>
+                            <th>Question</th>
                             <th>Answer</th>
                           </tr>
                         </thead>
                         <tbody>
+                          <% faqs.forEach(q => { %>
                           <tr>
-                            <td>1</td>
+                            <td hidden><%= q._id %></td>
+                            <td>
+                              <% q.keyword.forEach(k => { %>
+                                <span class="badge rounded-pill bg-info"><%= k %></span>
+                              <% }); %>
+                            </td>
+                            <td><%= q.question %></td>
+                            <td style="word-wrap: break-word;min-width: 200px;max-width: 200px;white-space:normal;"><%= q.answer %></td>
+                          </tr>
+                          <% }); %>
+<!--                           <tr>
+                            <td hidden>1</td>
                             <td>
                               <span class="badge rounded-pill bg-primary">Error</span>
                               <span class="badge rounded-pill bg-secondary">Download</span>
                             </td>
                             <td>The downloads on the website are known to have issues. You're welcome to try to use Big's via the `wt.link` command.</td>
-                          </tr>
+                          </tr> -->
                         </tbody>
                       </table>
                     </div>

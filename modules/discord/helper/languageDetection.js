@@ -9,10 +9,10 @@ module.exports.languageDetection = async (message) => {
 
   try {
     // Detect language from API
-    const language = await detectlanguage.detect(message.content);
+    const language = await detectlanguage.detect(message?.content);
 
     // If language is detected and is Turkish
-    if (language.length > 0 && language[0].language === 'tr') {
+    if (language.length > 0 && language[0]?.language === 'tr') {
       // Get an array of our allowed words from db
       const allowedWords = await allowedList.find({}, 'word');
 

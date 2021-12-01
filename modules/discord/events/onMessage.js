@@ -3,6 +3,7 @@ const discordTag = require('../../../models/taggedTeamGamigo');
 const messageCount = require('../../../models/messageCount');
 const { languageDetection } = require('../helper/languageDetection');
 const { bannedURLDetection } = require('../helper/bannedURL');
+const { faqMessage } = require('../helper/faqDetection');
 
 module.exports.onDiscordMessage = async (discordClient, message) => {
   // Check if message is from a bot (Important to stop loops)
@@ -13,6 +14,9 @@ module.exports.onDiscordMessage = async (discordClient, message) => {
 
   // Language Detection
   await languageDetection(message);
+
+  // FAQ Detections
+  await faqMessage(message, discordClient);
 
   // Log user if they use the team gamigo tag
   if (message.content.includes('<@&829731272716189746>')) {

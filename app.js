@@ -5,7 +5,7 @@ require('mongoose').connect(process.env.MONGO_URI, {
   dbName: 'WolfTeam',
 }).catch((err) => console.error(err));
 
-// All Passowrd related bits
+// All Password related bits
 require('./modules/init/passport').initialisePassport();
 
 // All express related bits

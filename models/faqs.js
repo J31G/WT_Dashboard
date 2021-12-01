@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 module.exports = mongoose.model('FAQs', new mongoose.Schema({
   keyword: {
-    type: String,
+    type: Array,
     required: true,
   },
   question: {
@@ -12,5 +12,8 @@ module.exports = mongoose.model('FAQs', new mongoose.Schema({
   answer: {
     type: String,
     required: true,
+  },
+  external_link: {
+    type: String,
   },
 }));
