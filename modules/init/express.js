@@ -2,7 +2,8 @@
 const express = require('express');
 const passport = require('passport');
 const flash = require('express-flash');
-const session = require('express-session');
+// const session = require('express-session');
+const session = require('cookie-session');
 
 // Local Imports
 const rootRoute = require('../../routes/root');
@@ -34,7 +35,3 @@ app.use('*', errorRoute);
 
 // HTTP address/port for our web app
 app.listen(process.env.PORT);
-/* const server = app.listen(process.env.PORT || 5000, process.env.ADDRESS || 'localhost', () => {
-  const { address, port } = server.address();
-  console.log(`Web server running on http://${address}:${port}`);
-}); */
