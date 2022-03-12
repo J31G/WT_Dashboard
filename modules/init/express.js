@@ -33,7 +33,8 @@ app.use('/', rootRoute);
 app.use('*', errorRoute);
 
 // HTTP address/port for our web app
-const server = app.listen(process.env.PORT || 5000, process.env.ADDRESS || 'localhost', () => {
+app.listen(process.env.PORT);
+/* const server = app.listen(process.env.PORT || 5000, process.env.ADDRESS || 'localhost', () => {
   const { address, port } = server.address();
   console.log(`Web server running on http://${address}:${port}`);
-});
+}); */
