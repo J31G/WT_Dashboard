@@ -1,7 +1,7 @@
 const DetectLanguage = require('detectlanguage');
 const allowedList = require('../../../models/allowedWordList');
 const discordLogs = require('../../../models/discordLogs');
-require('dotenv').config();
+// require('dotenv').config();
 
 module.exports.languageDetection = async (message) => {
   // Create a new client to check our messages

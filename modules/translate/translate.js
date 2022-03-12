@@ -1,5 +1,5 @@
 const axios = require('axios');
-require('dotenv').config();
+// require('dotenv').config();
 
 module.exports.translate = async (text, language) => {
   if (!text || !language) return;

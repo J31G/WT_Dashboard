@@ -1,5 +1,5 @@
 const DiscordJS = require('discord.js');
-require('dotenv').config();
+// require('dotenv').config();
 
 const { onDiscordReady } = require('../discord/events/onReady');
 const { onDiscordMessage } = require('../discord/events/onMessage');

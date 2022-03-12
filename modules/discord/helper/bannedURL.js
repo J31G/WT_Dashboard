@@ -1,7 +1,7 @@
 const { MessageEmbed } = require('discord.js');
 const bannedURL = require('../../../models/bannedURL');
 const discordLogs = require('../../../models/discordLogs');
-require('dotenv').config();
+// require('dotenv').config();
 
 module.exports.bannedURLDetection = async (message, client) => {
   // If gamemaster, ignore

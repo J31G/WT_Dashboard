@@ -2,7 +2,7 @@ const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
 const urlCrypt = require('url-crypt')(process.env.CRYPTO_KEY);
 const moment = require('moment');
 require('moment-countdown');
-require('dotenv').config();
+// require('dotenv').config();
 
 const eventsDB = require('../../../models/events');
 const eventUserUpload = require('../../../models/eventUserUpload');

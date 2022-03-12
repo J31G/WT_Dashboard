@@ -1,4 +1,4 @@
-require('dotenv').config();
+// // require('dotenv').config();
 const { halloween } = require('../interactions/halloween-event');
 const { questions } = require('../interactions/question');
 

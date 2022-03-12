@@ -1,4 +1,4 @@
-require('dotenv').config();
+// // require('dotenv').config();
 
 // DB connect
 require('mongoose').connect(process.env.MONGO_URI, {

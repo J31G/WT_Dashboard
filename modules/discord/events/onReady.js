@@ -1,6 +1,6 @@
 const WOKCommands = require('wokcommands');
 const appRoot = require('app-root-path');
-require('dotenv').config();
+// // require('dotenv').config();
 
 module.exports.onDiscordReady = async (client) => {
   const wokClient = new WOKCommands(client, {
