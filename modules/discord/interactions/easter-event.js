@@ -57,7 +57,10 @@ module.exports.easter = async (discordClient, interaction) => {
         'We have run out of events, please check back later.',
         language,
       );
-      interaction.reply({ content: translatedMessage.text, ephemeral: true });
+      interaction.reply({
+        content: await translatedMessage?.text,
+        ephemeral: true,
+      });
       return;
     }
 
