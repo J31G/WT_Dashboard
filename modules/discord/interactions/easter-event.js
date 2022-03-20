@@ -8,11 +8,11 @@ const eventsDB = require('../../../models/events');
 const eventUserUpload = require('../../../models/eventUserUpload');
 const { translate } = require('../../translate/translate');
 
-module.exports.halloween = async (discordClient, interaction) => {
+module.exports.easter = async (discordClient, interaction) => {
   const todaysEvent = await eventUserUpload.findOne({
     created_date: { $gte: moment().startOf('day') },
     userID: interaction.user.id,
-    event_name: 'halloween',
+    event_name: 'easter',
   });
   const timeRemaining = moment().startOf('day').add(1, 'days').countdown();
   const year = new Date();
@@ -38,7 +38,7 @@ module.exports.halloween = async (discordClient, interaction) => {
     const whatTheyHaveDone = await eventUserUpload.find(
       {
         userID: interaction.user.id,
-        event_name: 'halloween',
+        event_name: 'easter',
       },
       'event -_id',
     );
@@ -46,7 +46,7 @@ module.exports.halloween = async (discordClient, interaction) => {
     // Randomly pick one that they haven't
     const allEvents = await eventsDB.find({
       status: 'In progress',
-      event_name: 'halloween',
+      event_name: 'easter',
       name: { $nin: whatTheyHaveDone.map((e) => e?.event) },
     });
     event = allEvents[Math.floor(Math.random() * allEvents.length)];
@@ -65,7 +65,7 @@ module.exports.halloween = async (discordClient, interaction) => {
       userID: interaction.user.id,
       username: interaction.user.username,
       event: event.name,
-      event_name: 'halloween',
+      event_name: 'easter',
     });
   }
 
