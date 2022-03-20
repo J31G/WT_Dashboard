@@ -11,9 +11,11 @@ const checkAuth = (req, res, next) => {
   return res.redirect('/login');
 };
 
-const defaultData = {
-  user: req?.user,
-  allUsers: await userDB.find(),
+const defaultData = async () => {
+  return {
+    user: req?.user,
+    allUsers: await userDB.find(),
+  };
 };
 
 // GET
