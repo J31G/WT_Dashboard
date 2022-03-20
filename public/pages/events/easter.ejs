@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Easter | WolfTeam Admin</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End Plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="../css/modern-vertical/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="../images/favicon.png" />
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:../partials/_sidebar -->
+      <%- include('../../partials/_sidebar'); %>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:../partials/_navbar -->
+        <%- include('../../partials/_navbar'); %>
+        <!-- partial -->
+        <div class="main-panel min-vh-100">
+          <div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title">Easter Event</h3>
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item">Events</li>
+                  <li class="breadcrumb-item active" aria-current="page">Easter</li>
+                </ol>
+              </nav>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Create a new daily event</h4>
+                    <form class="forms-sample" action="/events/halloween/create-event" method="post">
+                      <div class="form-group row">
+                        <label for="eventName" class="col-sm-3 col-form-label">Name</label>
+                        <div class="col-sm-9">
+                          <input name="eventName" type="text" class="form-control" id="eventName">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="eventReward" class="col-sm-3 col-form-label">Reward</label>
+                        <div class="col-sm-9">
+                          <input name="eventReward" type="text" class="form-control" id="eventReward">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="eventDescription" class="col-sm-3 col-form-label">Description</label>
+                        <div class="col-sm-9">
+                          <textarea name="eventDescription" class="form-control h-100" id="eventDescription" rows="10"></textarea>
+                        </div>
+                      </div>
+
+                      <div class="mt-4">
+                        <button type="submit" class="btn btn-primary me-2">Submit</button>
+                        <button class="btn btn-dark">Cancel</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Running events</h4>
+                    <div id="eventsDiv" class="table-sorter-wrapper table-responsive fancy-toolbar" style="height: 320px;">
+                      <table id="eventsTable" class="table table-hover sortable-table tableFixHead">
+                        <thead>
+                          <tr>
+                            <th class="sortStyle">Name <i class="mdi mdi-chevron-down"></i></th>
+                            <th class="sortStyle">Reward <i class="mdi mdi-chevron-down"></i></th>
+                            <th class="sortStyle">Created <i class="mdi mdi-chevron-down"></i></th>
+                            <th>Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <% events.forEach(element => { %>
+                            <tr id="<%= element._id %>" style="cursor: pointer;" class="eventTableTR">
+                              <td><%= element.name %></td>
+                              <td><%= element.reward %></td>
+                              <td><%= `${element.created_date.toLocaleDateString('en-GB')} ${element.created_date.toLocaleTimeString('en-GB')}` %></td>
+                              <% if (element.status === 'In progress') { %>
+                                <td><label class="badge badge-warning">In progress</label></td>
+                              <% } else if (element.status === 'Completed') { %>
+                                <td><label class="badge badge-success">Completed</label></td>
+                              <% } else if (element.status === 'Ended') { %>
+                                <td><label class="badge badge-info">Ended</label></td>
+                              <% } else { %>
+                                <td><label class="badge badge-danger">Error</label></td>
+                              <% } %>
+                            </tr>
+                          <% }) %>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">User Entries</h4>
+
+                    <div id="eventsUserDiv" class="table-sorter-wrapper table-responsive fancy-toolbar">
+                      <table id="eventsUserTable" class="table table-hover sortable-table">
+                        <thead>
+                          <tr>
+                            <th class="sortStyle">User ID <i class="mdi mdi-chevron-down"></i></th>
+                            <th class="sortStyle">Username <i class="mdi mdi-chevron-down"></i></th>
+                            <th class="sortStyle">IGN <i class="mdi mdi-chevron-down"></i></th>
+                            <th class="sortStyle">Event <i class="mdi mdi-chevron-down"></i></th>
+                            <th class="sortStyle">Created <i class="mdi mdi-chevron-down"></i></th>
+                            <th class="sortStyle">Uploaded <i class="mdi mdi-chevron-down"></i></th>
+                            <th>URL</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <% eventUsers.forEach(element => { %>
+                            <tr id="<%= element._id %>" style="cursor: pointer;" class="eventUserTableTR">
+                              <td><%= element.userID %></td>
+                              <td><%= element.username %></td>
+                              <td><%= element.IGN %></td>
+                              <td><%= element.event %></td>
+                              <td><%= `${element.created_date.toLocaleDateString('en-GB')} ${element.created_date.toLocaleTimeString('en-GB')}` %></td>
+                              <td><%= `${element.upload_date.toLocaleDateString('en-GB')} ${element.upload_date.toLocaleTimeString('en-GB')}` %></td>
+                              <td><button onclick="window.open('<%= element.URL %>','_blank');" type="button" class="btn btn-outline-secondary btn-icon-text"> Download <i class="mdi mdi-download btn-icon-append"></i>
+                              </button></td>
+                            </tr>
+                          <% }) %>
+                        </tbody>
+                      </table>
+                    </div>
+
+                  </div>
+                </div>
+            </div>
+          </div>
+
+          <% events.forEach(element => { %>
+
+            <div class="modal fade" id="model-<%= element._id %>" data-bs-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <div class="d-flex align-items-center">
+                      <h5 class="modal-title me-3" id="eventModalLabel"><%= element.name %></h5>
+                      <% if (element.status === 'In progress') { %>
+                        <label class="badge badge-warning">In progress</label>
+                      <% } else if (element.status === 'Completed') { %>
+                        <label class="badge badge-success">Completed</label>
+                      <% } else if (element.status === 'Ended') { %>
+                        <label class="badge badge-info">Ended</label>
+                      <% } else { %>
+                        <label class="badge badge-danger">Error</label>
+                      <% } %>
+                    </div>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="container-fluid">
+                      <div class="row">
+                        <p><strong>Description</strong></p>
+                        <p><%= element.description %></p>
+                      </div>
+                      <div class="row">
+                        <div class="col-6">
+                          <p><strong>Reward</strong></p>
+                          <p><%= element.reward %></p>
+                        </div>
+                        <div class="col-6">
+                          <p><strong>Created</strong></p>
+                          <p><%= `${element.created_date.toLocaleDateString('en-GB')} ${element.created_date.toLocaleTimeString('en-GB')}` %></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button onclick="eventDelete({ id: '<%= element._id %>' });" type="button" class="btn btn-danger">Delete</button>
+                    <% if (element.status === 'Completed') { %>
+                      <button onclick="eventChange({ id: '<%= element._id %>', status: '<%= element.status %>' });" type="button" class="btn btn-warning">Re-open</button>
+                    <% } else { %>
+                      <button onclick="eventChange({ id: '<%= element._id %>', status: '<%= element.status %>' });" type="button" class="btn btn-success">Complete</button>
+                    <% } %>
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          <% }) %>
+
+          <!-- content-wrapper ends -->
+          <!-- partial:../partials/_footer -->
+          <%- include('../../partials/_footer'); %>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="../js/jq.tablesort.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../js/off-canvas.js"></script>
+    <script src="../js/hoverable-collapse.js"></script>
+    <script src="../js/misc.js"></script>
+    <script src="../js/settings.js"></script>
+    <script src="../js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="../js/tablesorter.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script>
+      // Show model with event into
+      $('.eventTableTR').on('click', async (event) => {
+        bootstrap.Modal.getOrCreateInstance($(`#model-${event.currentTarget.id}`)).show()
+      });
+      const eventChange = async ({ id, status }) => {
+        $.post('/events/halloween/event-change', {
+          id,
+          status,
+        }).then(() => {
+          location.reload();
+        });
+      }
+      const eventDelete = async ({ id }) => {
+        $.post('/events/halloween/event-delete', {
+          id
+        }).then(() => {
+          location.reload();
+        });
+      }
+    </script>
+    <!-- End custom js for this page -->
+  </body>
+</html>

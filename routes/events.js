@@ -12,16 +12,35 @@ const checkAuth = (req, res, next) => {
 };
 
 // GET
-router.get('/halloween', checkAuth, async (req, res) => res.render('events/halloween.ejs', {
-  user: req?.user,
-  allUsers: await userDB.find(),
-  events: await eventsDB.find({}).sort({ created_date: -1 }),
-  eventUsers: await eventUserDB.find({ upload_date: { $ne: null } }).sort({ created_date: -1 }),
-}));
+router.get('/halloween', checkAuth, async (req, res) =>
+  res.render('events/halloween.ejs', {
+    user: req?.user,
+    allUsers: await userDB.find(),
+    events: await eventsDB.find({}).sort({ created_date: -1 }),
+    eventUsers: await eventUserDB
+      .find({ upload_date: { $ne: null } })
+      .sort({ created_date: -1 }),
+  }),
+);
+
+router.get('/easter', checkAuth, async (req, res) =>
+  res.render('events/easter.ejs', {
+    user: req?.user,
+    allUsers: await userDB.find(),
+    events: await eventsDB.find({}).sort({ created_date: -1 }),
+    eventUsers: await eventUserDB
+      .find({ upload_date: { $ne: null } })
+      .sort({ created_date: -1 }),
+  }),
+);
 
 // POST
 router.post('/halloween/create-event', checkAuth, async (req, res) => {
-  if (!req?.body?.eventName || !req?.body?.eventReward || !req?.body?.eventDescription) {
+  if (
+    !req?.body?.eventName ||
+    !req?.body?.eventReward ||
+    !req?.body?.eventDescription
+  ) {
     res.status('500');
     return res.send({
       statusCode: 500,
@@ -37,12 +56,18 @@ router.post('/halloween/create-event', checkAuth, async (req, res) => {
   return res.redirect('/events/halloween');
 });
 router.post('/halloween/event-change', (req, res) => {
-  const status = req?.body?.status === 'Completed' ? 'In progress' : 'Completed';
-  eventsDB.updateOne({ _id: req?.body?.id }, { status }, { upsert: true }, (err) => {
-    if (err) res.send(500, { error: err });
-    res.status(200);
-    return res.redirect('/events/halloween');
-  });
+  const status =
+    req?.body?.status === 'Completed' ? 'In progress' : 'Completed';
+  eventsDB.updateOne(
+    { _id: req?.body?.id },
+    { status },
+    { upsert: true },
+    (err) => {
+      if (err) res.send(500, { error: err });
+      res.status(200);
+      return res.redirect('/events/halloween');
+    },
+  );
 });
 router.post('/halloween/event-delete', (req, res) => {
   eventsDB.deleteOne({ _id: req?.body?.id }, (err) => {

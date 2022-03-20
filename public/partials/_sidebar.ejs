@@ -1,6 +1,10 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
-  <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-    <a class="sidebar-brand brand-logo text-white" href="/"><h1>WolfTeam</h1></a>
+  <div
+    class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top"
+  >
+    <a class="sidebar-brand brand-logo text-white" href="/"
+      ><h1>WolfTeam</h1></a
+    >
     <a class="sidebar-brand brand-logo-mini text-white" href="/"><h3>WT</h3></a>
   </div>
   <ul class="nav">
@@ -8,7 +12,11 @@
       <div class="profile-desc">
         <div class="profile-pic">
           <div class="count-indicator">
-            <img class="img-xs rounded-circle " src="../images/faces/face2.jpg" alt="">
+            <img
+              class="img-xs rounded-circle"
+              src="../images/faces/face2.jpg"
+              alt=""
+            />
             <span class="count bg-success"></span>
           </div>
           <div class="profile-name">
@@ -16,27 +24,42 @@
             <span><%= user?.userType %></span>
           </div>
         </div>
-        <a href="#" id="profile-dropdown" data-bs-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
-        <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list" aria-labelledby="profile-dropdown">
-          <a href="javascript:bootstrap.Modal.getOrCreateInstance($('#userProfile')).show();" class="dropdown-item preview-item">
+        <a href="#" id="profile-dropdown" data-bs-toggle="dropdown"
+          ><i class="mdi mdi-dots-vertical"></i
+        ></a>
+        <div
+          class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list"
+          aria-labelledby="profile-dropdown"
+        >
+          <a
+            href="javascript:bootstrap.Modal.getOrCreateInstance($('#userProfile')).show();"
+            class="dropdown-item preview-item"
+          >
             <div class="preview-thumbnail">
               <div class="preview-icon bg-dark rounded-circle">
                 <i class="mdi mdi-settings text-primary"></i>
               </div>
             </div>
             <div class="preview-item-content">
-              <p class="preview-subject ellipsis mb-1 text-small">User Profile</p>
+              <p class="preview-subject ellipsis mb-1 text-small">
+                User Profile
+              </p>
             </div>
           </a>
           <div class="dropdown-divider"></div>
-          <a href="javascript:bootstrap.Modal.getOrCreateInstance($('#changePassword')).show();" class="dropdown-item preview-item">
+          <a
+            href="javascript:bootstrap.Modal.getOrCreateInstance($('#changePassword')).show();"
+            class="dropdown-item preview-item"
+          >
             <div class="preview-thumbnail">
               <div class="preview-icon bg-dark rounded-circle">
-                <i class="mdi mdi-onepassword  text-info"></i>
+                <i class="mdi mdi-onepassword text-info"></i>
               </div>
             </div>
             <div class="preview-item-content">
-              <p class="preview-subject ellipsis mb-1 text-small">Change Password</p>
+              <p class="preview-subject ellipsis mb-1 text-small">
+                Change Password
+              </p>
             </div>
           </a>
         </div>
@@ -54,7 +77,13 @@
       </a>
     </li>
     <li class="nav-item menu-items">
-      <a class="nav-link" data-bs-toggle="collapse" href="#events" aria-expanded="false" aria-controls="events">
+      <a
+        class="nav-link"
+        data-bs-toggle="collapse"
+        href="#events"
+        aria-expanded="false"
+        aria-controls="events"
+      >
         <span class="menu-icon">
           <i class="mdi mdi-gamepad-variant"></i>
         </span>
@@ -63,13 +92,24 @@
       </a>
       <div class="collapse" id="events">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="/events/halloween">Halloween</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="/events/halloween">Halloween</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/events/easter">Easter</a>
+          </li>
         </ul>
       </div>
     </li>
 
     <li class="nav-item menu-items">
-      <a class="nav-link" data-bs-toggle="collapse" href="#lists" aria-expanded="false" aria-controls="lists">
+      <a
+        class="nav-link"
+        data-bs-toggle="collapse"
+        href="#lists"
+        aria-expanded="false"
+        aria-controls="lists"
+      >
         <span class="menu-icon">
           <i class="mdi mdi-view-list"></i>
         </span>
@@ -78,8 +118,12 @@
       </a>
       <div class="collapse" id="lists">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="/lists/banned-url">Banned URLs</a></li>
-          <li class="nav-item"> <a class="nav-link" href="/lists/allowed-word">Allowed Words</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="/lists/banned-url">Banned URLs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/lists/allowed-word">Allowed Words</a>
+          </li>
         </ul>
       </div>
     </li>
@@ -94,7 +138,13 @@
     </li>
 
     <li class="nav-item menu-items">
-      <a class="nav-link" data-bs-toggle="collapse" href="#reports" aria-expanded="false" aria-controls="reports">
+      <a
+        class="nav-link"
+        data-bs-toggle="collapse"
+        href="#reports"
+        aria-expanded="false"
+        aria-controls="reports"
+      >
         <span class="menu-icon">
           <i class="mdi mdi-chart-bar"></i>
         </span>
@@ -103,7 +153,9 @@
       </a>
       <div class="collapse" id="reports">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="/reports/team-gamigo">Team Gamigo</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="/reports/team-gamigo">Team Gamigo</a>
+          </li>
         </ul>
       </div>
     </li>
@@ -117,85 +169,155 @@
         <span class="menu-title">Logs</span>
       </a>
     </li>
-
   </ul>
 </nav>
 
-<div class="modal fade" id="changePassword" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="changePassword"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="changePasswordLabel">Change Password</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
-      <form id="reset-password" class="needs-validation" method="post" action="/change-password">
+      <form
+        id="reset-password"
+        class="needs-validation"
+        method="post"
+        action="/change-password"
+      >
         <div class="modal-body">
           <div class="col-sm my-2">
             <label for="inputPassword" class="form-label">New Password</label>
-            <input name="password" type="password" class="form-control validate" id="inputPassword" required />
-            <div class="invalid-feedback">
-              Passwords do not match
-            </div>
+            <input
+              name="password"
+              type="password"
+              class="form-control validate"
+              id="inputPassword"
+              required
+            />
+            <div class="invalid-feedback">Passwords do not match</div>
           </div>
           <div class="col-sm my-2">
-            <label for="inputPasswordConfirm" class="form-label">Confirm Password</label>
-            <input name="passwordConfirm" type="password" class="form-control" id="inputPasswordComfirm" required />
-            <div class="invalid-feedback">
-              Passwords do not match
-            </div>
+            <label for="inputPasswordConfirm" class="form-label"
+              >Confirm Password</label
+            >
+            <input
+              name="passwordConfirm"
+              type="password"
+              class="form-control"
+              id="inputPasswordComfirm"
+              required
+            />
+            <div class="invalid-feedback">Passwords do not match</div>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
           <button type="submit" class="btn btn-primary">Reset</button>
         </div>
-        <input class="d-none" name="email" type="text" value="<%= user?.email %>">
-    </form>
+        <input
+          class="d-none"
+          name="email"
+          type="text"
+          value="<%= user?.email %>"
+        />
+      </form>
     </div>
   </div>
 </div>
 
-<div class="modal fade" id="userProfile" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="userProfile"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="userProfileLabel">Account</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <form method="post" action="/update-user">
         <div class="modal-body">
-
           <div class="row">
             <div class="col-sm mb-2">
-
               <label for="inputName" class="form-label">Name</label>
-              <input name="name" type="text" class="form-control validate" id="inputName" value="<%= user?.name %>" required />
-  
+              <input
+                name="name"
+                type="text"
+                class="form-control validate"
+                id="inputName"
+                value="<%= user?.name %>"
+                required
+              />
             </div>
           </div>
           <div class="row">
             <div class="col-sm my-2">
-
               <label for="inputEmail" class="form-label">Email</label>
-              <input name="email" type="email" class="form-control validate" id="inputEmail" value="<%= user?.email %>" required />
-  
+              <input
+                name="email"
+                type="email"
+                class="form-control validate"
+                id="inputEmail"
+                value="<%= user?.email %>"
+                required
+              />
             </div>
           </div>
           <div class="row">
             <div class="col-sm my-2">
-
               <label for="inputDiscordID" class="form-label">Discord ID</label>
-              <input name="discordID" type="text" class="form-control validate" id="inputDiscordID" value="<%= user?.discordID %>" required />
-  
+              <input
+                name="discordID"
+                type="text"
+                class="form-control validate"
+                id="inputDiscordID"
+                value="<%= user?.discordID %>"
+                required
+              />
             </div>
           </div>
-
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
           <button type="submit" class="btn btn-primary">Save</button>
         </div>
-    </form>
+      </form>
     </div>
   </div>
 </div>
