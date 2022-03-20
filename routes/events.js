@@ -11,7 +11,7 @@ const checkAuth = (req, res, next) => {
   return res.redirect('/login');
 };
 
-const defaultData = async () => {
+const defaultData = async (req) => {
   return {
     user: req?.user,
     allUsers: await userDB.find(),
@@ -21,7 +21,7 @@ const defaultData = async () => {
 // GET
 router.get('/halloween', checkAuth, async (req, res) =>
   res.render('events/halloween.ejs', {
-    ...(await defaultData()),
+    ...(await defaultData(req)),
     events: await eventsDB
       .find({ event_name: 'halloween' })
       .sort({ created_date: -1 }),
@@ -33,7 +33,7 @@ router.get('/halloween', checkAuth, async (req, res) =>
 
 router.get('/easter', checkAuth, async (req, res) =>
   res.render('events/easter.ejs', {
-    ...(await defaultData()),
+    ...(await defaultData(req)),
     events: await eventsDB
       .find({ event_name: 'easter' })
       .sort({ created_date: -1 }),
