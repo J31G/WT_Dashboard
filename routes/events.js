@@ -13,7 +13,7 @@ const checkAuth = (req, res, next) => {
 
 // GET
 router.get('/halloween', checkAuth, async (req, res) => {
-  await eventUserDB.findOneAndUpdate({}, { event_name: 'halloween' });
+  await eventUserDB.updateMany({}, { event_name: 'halloween' });
   res.render('events/halloween.ejs', {
     user: req?.user,
     allUsers: await userDB.find(),
