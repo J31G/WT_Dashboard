@@ -11,11 +11,15 @@ const checkAuth = (req, res, next) => {
   return res.redirect('/login');
 };
 
+const defaultData = {
+  user: req?.user,
+  allUsers: await userDB.find(),
+};
+
 // GET
 router.get('/halloween', checkAuth, async (req, res) =>
   res.render('events/halloween.ejs', {
-    user: req?.user,
-    allUsers: await userDB.find(),
+    ...defaultData,
     events: await eventsDB
       .find({ event_name: 'halloween' })
       .sort({ created_date: -1 }),
@@ -27,8 +31,7 @@ router.get('/halloween', checkAuth, async (req, res) =>
 
 router.get('/easter', checkAuth, async (req, res) =>
   res.render('events/easter.ejs', {
-    user: req?.user,
-    allUsers: await userDB.find(),
+    ...defaultData,
     events: await eventsDB
       .find({ event_name: 'easter' })
       .sort({ created_date: -1 }),
@@ -55,6 +58,7 @@ router.post('/halloween/create-event', checkAuth, async (req, res) => {
     name: req?.body?.eventName,
     reward: req?.body?.eventReward,
     description: req?.body?.eventDescription,
+    event_name: 'halloween',
   });
   res.status(200);
   return res.redirect('/events/halloween');
@@ -79,6 +83,28 @@ router.post('/halloween/event-delete', (req, res) => {
     res.status(200);
     return res.redirect('/events/halloween');
   });
+});
+
+router.post('/easter/create-event', checkAuth, async (req, res) => {
+  if (
+    !req?.body?.eventName ||
+    !req?.body?.eventReward ||
+    !req?.body?.eventDescription
+  ) {
+    res.status('500');
+    return res.send({
+      statusCode: 500,
+      statusMessage: 'Data missing',
+    });
+  }
+  eventsDB.create({
+    name: req?.body?.eventName,
+    reward: req?.body?.eventReward,
+    description: req?.body?.eventDescription,
+    event_name: 'easter',
+  });
+  res.status(200);
+  return res.redirect('/events/easter');
 });
 
 module.exports = router;

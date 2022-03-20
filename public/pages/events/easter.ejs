@@ -43,23 +43,23 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Create a new daily event</h4>
-                    <form class="forms-sample" action="/events/halloween/create-event" method="post">
+                    <form class="forms-sample" action="/events/easter/create-event" method="post">
                       <div class="form-group row">
                         <label for="eventName" class="col-sm-3 col-form-label">Name</label>
                         <div class="col-sm-9">
-                          <input name="eventName" type="text" class="form-control" id="eventName">
+                          <input name="eventName" type="text" class="form-control" id="eventName" required>
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="eventReward" class="col-sm-3 col-form-label">Reward</label>
                         <div class="col-sm-9">
-                          <input name="eventReward" type="text" class="form-control" id="eventReward">
+                          <input name="eventReward" type="text" class="form-control" id="eventReward" required>
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="eventDescription" class="col-sm-3 col-form-label">Description</label>
                         <div class="col-sm-9">
-                          <textarea name="eventDescription" class="form-control h-100" id="eventDescription" rows="10"></textarea>
+                          <textarea name="eventDescription" class="form-control h-100" id="eventDescription" rows="10" required></textarea>
                         </div>
                       </div>
 
