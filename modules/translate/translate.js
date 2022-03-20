@@ -2,19 +2,17 @@ const axios = require('axios');
 // require('dotenv').config();
 
 module.exports.translate = async (text, language) => {
-  if (!text || !language) return 'Error';
+  if (!text) return 'Error';
 
-  const {
-    data: { translations },
-  } = await axios.get('https://api-free.deepl.com/v2/translate', {
+  const { data } = await axios.get('https://api-free.deepl.com/v2/translate', {
     params: {
       auth_key: process.env.DEEPL_API,
       text,
-      target_lang: language.toUpperCase(),
+      target_lang: language.toUpperCase() || 'EN',
     },
   });
 
-  if (!translations[0]) return 'Error';
+  if (!data?.translations[0]) return 'Error';
 
-  return translations[0];
+  return data?.translations[0];
 };

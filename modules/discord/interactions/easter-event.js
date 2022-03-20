@@ -16,7 +16,7 @@ module.exports.easter = async (discordClient, interaction) => {
   });
   const timeRemaining = moment().startOf('day').add(1, 'days').countdown();
   const year = new Date();
-  const language = interaction.customId.substring(16).toUpperCase();
+  const language = interaction.customId.substring(13).toUpperCase();
 
   let event = {};
 
@@ -53,16 +53,17 @@ module.exports.easter = async (discordClient, interaction) => {
 
     // If not events left
     if (allEvents.length === 0) {
-      translate(
+      const translatedMessage = await translate(
         'We have run out of events, please check back later.',
         language,
-      ).then((translatedMessage) => {
-        interaction.reply({
-          content:
-            translatedMessage?.text || 'Something has gone wrong, sorry :(',
-          ephemeral: true,
-        });
+      );
+
+      interaction.reply({
+        content:
+          translatedMessage?.text || 'Something has gone wrong, sorry :(',
+        ephemeral: true,
       });
+      return;
     }
 
     await eventUserUpload.create({
