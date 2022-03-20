@@ -16,7 +16,9 @@ router.get('/halloween', checkAuth, async (req, res) =>
   res.render('events/halloween.ejs', {
     user: req?.user,
     allUsers: await userDB.find(),
-    events: await eventsDB.find({}).sort({ created_date: -1 }),
+    events: await eventsDB
+      .find({ event_name: 'halloween' })
+      .sort({ created_date: -1 }),
     eventUsers: await eventUserDB
       .find({ upload_date: { $ne: null }, event_name: 'halloween' })
       .sort({ created_date: -1 }),
@@ -27,7 +29,9 @@ router.get('/easter', checkAuth, async (req, res) =>
   res.render('events/easter.ejs', {
     user: req?.user,
     allUsers: await userDB.find(),
-    events: await eventsDB.find({}).sort({ created_date: -1 }),
+    events: await eventsDB
+      .find({ event_name: 'easter' })
+      .sort({ created_date: -1 }),
     eventUsers: await eventUserDB
       .find({ upload_date: { $ne: null }, event_name: 'easter' })
       .sort({ created_date: -1 }),
