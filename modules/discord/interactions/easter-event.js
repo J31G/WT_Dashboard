@@ -58,7 +58,8 @@ module.exports.easter = async (discordClient, interaction) => {
         language,
       );
       interaction.reply({
-        content: await translatedMessage?.text,
+        content:
+          translatedMessage?.text || 'Something has gone wrong, sorry :(',
         ephemeral: true,
       });
       return;
