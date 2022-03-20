@@ -53,16 +53,16 @@ module.exports.easter = async (discordClient, interaction) => {
 
     // If not events left
     if (allEvents.length === 0) {
-      const translatedMessage = await translate(
+      translate(
         'We have run out of events, please check back later.',
         language,
-      );
-      interaction.reply({
-        content:
-          translatedMessage?.text || 'Something has gone wrong, sorry :(',
-        ephemeral: true,
+      ).then((translatedMessage) => {
+        interaction.reply({
+          content:
+            translatedMessage?.text || 'Something has gone wrong, sorry :(',
+          ephemeral: true,
+        });
       });
-      return;
     }
 
     await eventUserUpload.create({
