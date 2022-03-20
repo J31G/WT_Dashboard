@@ -11,12 +11,10 @@ const checkAuth = (req, res, next) => {
   return res.redirect('/login');
 };
 
-const defaultData = async (req) => {
-  return {
-    user: req?.user,
-    allUsers: await userDB.find(),
-  };
-};
+const defaultData = async (req) => ({
+  user: req?.user,
+  allUsers: await userDB.find(),
+});
 
 // GET
 router.get('/halloween', checkAuth, async (req, res) =>
