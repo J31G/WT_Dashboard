@@ -12,7 +12,8 @@ const checkAuth = (req, res, next) => {
 };
 
 // GET
-router.get('/halloween', checkAuth, async (req, res) =>
+router.get('/halloween', checkAuth, async (req, res) => {
+  await eventUserDB.findOneAndUpdate({}, { event_name: 'halloween' });
   res.render('events/halloween.ejs', {
     user: req?.user,
     allUsers: await userDB.find(),
@@ -22,8 +23,8 @@ router.get('/halloween', checkAuth, async (req, res) =>
     eventUsers: await eventUserDB
       .find({ upload_date: { $ne: null }, event_name: 'halloween' })
       .sort({ created_date: -1 }),
-  }),
-);
+  });
+});
 
 router.get('/easter', checkAuth, async (req, res) =>
   res.render('events/easter.ejs', {

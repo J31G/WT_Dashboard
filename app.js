@@ -1,9 +1,11 @@
 // // require('dotenv').config();
 
 // DB connect
-require('mongoose').connect(process.env.MONGO_URI, {
-  dbName: 'WolfTeam',
-}).catch((err) => console.error(err));
+require('mongoose')
+  .connect(process.env.MONGO_URI, {
+    dbName: 'WolfTeam',
+  })
+  .catch((err) => console.error(err));
 
 // All Password related bits
 require('./modules/init/passport').initialisePassport();
