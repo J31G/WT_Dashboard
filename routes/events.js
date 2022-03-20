@@ -108,5 +108,26 @@ router.post('/easter/create-event', checkAuth, async (req, res) => {
   res.status(200);
   return res.redirect('/events/easter');
 });
+router.post('/easter/event-change', (req, res) => {
+  const status =
+    req?.body?.status === 'Completed' ? 'In progress' : 'Completed';
+  eventsDB.updateOne(
+    { _id: req?.body?.id },
+    { status },
+    { upsert: true },
+    (err) => {
+      if (err) res.send(500, { error: err });
+      res.status(200);
+      return res.redirect('/events/easter');
+    },
+  );
+});
+router.post('/easter/event-delete', (req, res) => {
+  eventsDB.deleteOne({ _id: req?.body?.id }, (err) => {
+    if (err) res.send(500, { error: err });
+    res.status(200);
+    return res.redirect('/events/easter');
+  });
+});
 
 module.exports = router;
