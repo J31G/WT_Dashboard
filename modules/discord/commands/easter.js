@@ -37,17 +37,17 @@ module.exports = {
 
     const row = new MessageActionRow().addComponents(
       new MessageButton()
-        .setCustomId('halloween-event-en')
+        .setCustomId('easter-event-en')
         .setLabel('Daily Event')
         .setStyle('PRIMARY')
         .setEmoji('🎃'),
       new MessageButton()
-        .setCustomId('halloween-event-de')
+        .setCustomId('easter-event-de')
         .setLabel('Tägliches Ereignis')
         .setStyle('SUCCESS')
         .setEmoji('🎃'),
       new MessageButton()
-        .setCustomId('halloween-event-fr')
+        .setCustomId('easter-event-fr')
         .setLabel('Événement quotidien')
         .setStyle('DANGER')
         .setEmoji('🎃'),
