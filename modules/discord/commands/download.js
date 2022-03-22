@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
 
 module.exports = {
   slash: 'both',
@@ -28,8 +28,23 @@ module.exports = {
       .setFooter(`© BigBOT ${year.getFullYear()}`, client.user.avatarURL)
       .setTimestamp();
 
-    if (interaction) return interaction.reply({ embeds: [embed] });
-    message.reply({ embeds: [embed] });
+      const row = new MessageActionRow().addComponents(
+        new MessageButton()
+          .setLabel('English')
+          .setStyle('LINK')
+          .setURL('https://cdn.wolfteam.info/wolfteam/en/Wolfteam_EN_Offline_Installer.exe'),
+        new MessageButton()
+          .setLabel('German')
+          .setStyle('LINK')
+          .setURL('https://cdn.wolfteam.info/wolfteam/en/Wolfteam_EN_Offline_Installer.exe'),
+        new MessageButton()
+          .setLabel('French')
+          .setStyle('LINK')
+          .setURL('https://cdn.wolfteam.info/wolfteam/en/Wolfteam_EN_Offline_Installer.exe'),
+      );
+
+    if (interaction) return interaction.reply({ embeds: [embed], components: [row] });
+    message.reply({ embeds: [embed], components: [row] });
     setTimeout(() => message.delete(), 500);
     return '';
   },
