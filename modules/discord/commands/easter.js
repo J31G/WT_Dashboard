@@ -40,17 +40,17 @@ module.exports = {
         .setCustomId('easter-event-en')
         .setLabel('Daily Event')
         .setStyle('PRIMARY')
-        .setEmoji('🎃'),
+        .setEmoji('🐣'),
       new MessageButton()
         .setCustomId('easter-event-de')
         .setLabel('Tägliches Ereignis')
         .setStyle('SUCCESS')
-        .setEmoji('🎃'),
+        .setEmoji('🐣'),
       new MessageButton()
         .setCustomId('easter-event-fr')
         .setLabel('Événement quotidien')
         .setStyle('DANGER')
-        .setEmoji('🎃'),
+        .setEmoji('🐣'),
     );
 
     message.channel.send({ embeds: [embed], components: [row] });
