@@ -19,18 +19,18 @@ module.exports = {
       .setColor('#00000')
       .addField(
         '🏴󠁧󠁢󠁥󠁮󠁧󠁿 Easter Event - **Every bunny was kung fu fighting!**',
-        '_ _\nPress the **Daily Event** button to get your daily quest!\n\n_This event will end 18.04.2022 - 12:00 Berlin Time._\n_ _',
+        '_ _\nPress the **Daily Event** button to get your daily quest!\n\n_This event will end 18.04.2022 - 12:00 Berlin Time._\n_ * *_',
       )
       .addField(
         '🇩🇪 Osterereignis - **Jeder Hase hat Kung-Fu gekämpft!**',
-        '_ _\nDrücke die Schaltfläche **Tägliches Ereignis**, um deine tägliche Aufgabe zu erhalten!\n\n_Diese Veranstaltung endet am 18.04.2022 - 12:00 Uhr Berliner Zeit._\n_ _',
+        '_ _\nDrücke die Schaltfläche **Tägliches Ereignis**, um deine tägliche Aufgabe zu erhalten!\n\n_Diese Veranstaltung endet am 18.04.2022 - 12:00 Uhr Berliner Zeit._\n_ * *_',
       )
       .addField(
         "🇫🇷 Evénement de Pâques - **Tous les lapins se sont battus en kung-fu!**",
-        '_ _\nAppuyez sur le bouton **Événement quotidien** pour obtenir votre défi quotidien!, um deine tägliche Aufgabe zu erhalten!\n\n_Cet événement se terminera le 18.04.2022 - 12:00 heure de Berlin._\n_ _',
+        '_ _\nAppuyez sur le bouton **Événement quotidien** pour obtenir votre défi quotidien!, um deine tägliche Aufgabe zu erhalten!\n\n_Cet événement se terminera le 18.04.2022 - 12:00 heure de Berlin._\n_ * *_',
       )
       .setImage(
-        'https://media.discordapp.net/attachments/900305371787304981/900306192159637594/orange-halloween-banner-with-pumpkin-spider-bats_1017-21309.jpg',
+        'https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/4-fat-man-rabbit-ears-ezume-images.jpg',
       )
       .setFooter(`© BigBOT ${year.getFullYear()}`, client.user.avatarURL)
       .setTimestamp();
