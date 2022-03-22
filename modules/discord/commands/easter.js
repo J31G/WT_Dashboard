@@ -30,7 +30,7 @@ module.exports = {
         '_ _\nAppuyez sur le bouton **Événement quotidien** pour obtenir votre défi quotidien!, um deine tägliche Aufgabe zu erhalten!\n\n_Cet événement se terminera le 18.04.2022 - 12:00 heure de Berlin._\n_ ** ** _',
       )
       .setImage(
-        'https://cdn.wolfteam.info/wolfteam/events/halloween/333726780118663178/Happy Easter.png',
+        'https://i.imgur.com/Y7vVRsE.png',
       )
       .setFooter(`© BigBOT ${year.getFullYear()}`, client.user.avatarURL)
       .setTimestamp();
