@@ -22,12 +22,12 @@ module.exports = {
         'Press the **Daily Event** button to get your daily quest!\n\n_This event will end 18.04.2022 - 12:00 Berlin Time._',
       )
       .addField(
-        '🇩🇪 Hee! Hee! **Gruselige Halloween-Herausforderungen!**',
-        'Drücke die Schaltfläche **Tägliches Ereignis**, um deine tägliche Aufgabe zu erhalten!\n_Diese Veranstaltung endet am 01.11.2021 - 12:00 Uhr Berliner Zeit._',
+        '🇩🇪 Osterereignis - **Jeder Hase hat Kung-Fu gekämpft!**',
+        'Drücke die Schaltfläche **Tägliches Ereignis**, um deine tägliche Aufgabe zu erhalten!\n\n_Diese Veranstaltung endet am 18.04.2022 - 12:00 Uhr Berliner Zeit._',
       )
       .addField(
-        "🇫🇷 Hee ! Hee ! **Défis d'Halloween effrayants!**",
-        'Appuyez sur le bouton **Événement quotidien** pour obtenir votre défi quotidien!, um deine tägliche Aufgabe zu erhalten!\n_Cet événement se terminera le 01.11.2021 - 12:00 heure de Berlin._',
+        "🇫🇷 Evénement de Pâques - **Tous les lapins se sont battus en kung-fu!**",
+        'Appuyez sur le bouton **Événement quotidien** pour obtenir votre défi quotidien!, um deine tägliche Aufgabe zu erhalten!\n\n_Cet événement se terminera le 18.04.2022 - 12:00 heure de Berlin._',
       )
       .setImage(
         'https://media.discordapp.net/attachments/900305371787304981/900306192159637594/orange-halloween-banner-with-pumpkin-spider-bats_1017-21309.jpg',
