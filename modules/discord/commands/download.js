@@ -38,12 +38,12 @@ module.exports = {
           .setLabel('German')
           .setStyle('LINK')
           .setEmoji('🇩🇪')
-          .setURL('https://cdn.wolfteam.info/wolfteam/en/Wolfteam_EN_Offline_Installer.exe'),
+          .setURL('https://cdn.wolfteam.info/wolfteam/de/Wolfteam_DE_Offline_Installer.exe'),
         new MessageButton()
           .setLabel('French')
           .setStyle('LINK')
           .setEmoji('🇫🇷')
-          .setURL('https://cdn.wolfteam.info/wolfteam/en/Wolfteam_EN_Offline_Installer.exe'),
+          .setURL('https://cdn.wolfteam.info/wolfteam/fr/Wolfteam_FR_Offline_Installer.exe'),
       );
 
     if (interaction) return interaction.reply({ embeds: [embed], components: [row] });
