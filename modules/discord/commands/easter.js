@@ -18,7 +18,7 @@ module.exports = {
     const embed = new MessageEmbed()
       .setColor('#00000')
       .addField(
-        '🏴󠁧󠁢󠁥󠁮󠁧󠁿 Hee! Hee! **Spooky Halloween challenges!**',
+        '🏴󠁧󠁢󠁥󠁮󠁧󠁿 Easter Event - **Every bunny was kung fu fighting!**',
         'Press the **Daily Event** button to get your daily quest!\n\n_This event will end 18.04.2022 - 12:00 Berlin Time._',
       )
       .addField(
