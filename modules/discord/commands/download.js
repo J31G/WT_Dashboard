@@ -32,14 +32,17 @@ module.exports = {
         new MessageButton()
           .setLabel('English')
           .setStyle('LINK')
+          .setEmoji('🏴󠁧󠁢󠁥󠁮󠁧󠁿')
           .setURL('https://cdn.wolfteam.info/wolfteam/en/Wolfteam_EN_Offline_Installer.exe'),
         new MessageButton()
           .setLabel('German')
           .setStyle('LINK')
+          .setEmoji('🇩🇪')
           .setURL('https://cdn.wolfteam.info/wolfteam/en/Wolfteam_EN_Offline_Installer.exe'),
         new MessageButton()
           .setLabel('French')
           .setStyle('LINK')
+          .setEmoji('🇫🇷')
           .setURL('https://cdn.wolfteam.info/wolfteam/en/Wolfteam_EN_Offline_Installer.exe'),
       );
 
