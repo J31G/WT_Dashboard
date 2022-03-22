@@ -19,7 +19,7 @@ module.exports = {
       .setColor('#00000')
       .addField(
         '🏴󠁧󠁢󠁥󠁮󠁧󠁿 Hee! Hee! **Spooky Halloween challenges!**',
-        'Press the **Daily Event** button to get your daily quest!\n_This event will end 01.11.2021 - 12:00 Berlin Time_',
+        'Press the **Daily Event** button to get your daily quest!\n\n_This event will end 18.04.2022 - 12:00 Berlin Time._',
       )
       .addField(
         '🇩🇪 Hee! Hee! **Gruselige Halloween-Herausforderungen!**',
