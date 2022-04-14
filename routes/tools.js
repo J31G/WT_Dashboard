@@ -82,11 +82,11 @@ router.post('/announcements/create', checkAuth, async (req, res) => {
   );
   channel
     .send({ embeds })
-    .then((msg) =>
+    /* .then((msg) =>
       setTimeout(() => {
         msg.delete().catch(console.error);
       }, 5000),
-    )
+    ) */
     .catch(console.error);
   return res.status(200).redirect('/tools/announcements');
 });
