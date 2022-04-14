@@ -13,6 +13,7 @@ const reportsRoute = require('./reports');
 const listsRoute = require('./lists');
 const faqsRoute = require('./faqs');
 const logsRoute = require('./logs');
+const toolsRoute = require('./tools');
 
 const router = express.Router();
 
@@ -33,31 +34,46 @@ router.use('/lists', listsRoute);
 router.use('/faqs', faqsRoute);
 router.use('/reports', reportsRoute);
 router.use('/logs', logsRoute);
+router.use('/tools', toolsRoute);
 
 // GET
-router.get('/', checkAuth, async (req, res) => res.render('index.ejs', {
-  user: req?.user,
-  allUsers: await userDB.find(),
-  discordStats: await queryStats(),
-  msgCount: await messageCountDB.findOne({ date_time: { $gte: moment().startOf('day') } }),
-  msgCountYesterday: await messageCountDB.findOne({ date_time: { $gte: moment().subtract(1, 'day').startOf('day') } }),
-}));
+router.get('/', checkAuth, async (req, res) =>
+  res.render('index.ejs', {
+    user: req?.user,
+    allUsers: await userDB.find(),
+    discordStats: await queryStats(),
+    msgCount: await messageCountDB.findOne({
+      date_time: { $gte: moment().startOf('day') },
+    }),
+    msgCountYesterday: await messageCountDB.findOne({
+      date_time: { $gte: moment().subtract(1, 'day').startOf('day') },
+    }),
+  }),
+);
 router.get('/login', checkNotAuth, (req, res) => res.render('login.ejs'));
 
 // POST
-router.post('/login', checkNotAuth, passport.authenticate('local', {
-  successRedirect: '/',
-  failureRedirect: '/login',
-  failureFlash: true,
-}));
+router.post(
+  '/login',
+  checkNotAuth,
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login',
+    failureFlash: true,
+  }),
+);
 router.post('/logout', checkAuth, (req, res) => {
   req.logOut();
   res.redirect('/login');
 });
 router.post('/change-password', async (req, res) => {
-  await userDB.findOneAndUpdate({ email: req?.body?.email }, {
-    password: await bcrypt.hash(req?.body?.password, 10),
-  }, { upsert: true });
+  await userDB.findOneAndUpdate(
+    { email: req?.body?.email },
+    {
+      password: await bcrypt.hash(req?.body?.password, 10),
+    },
+    { upsert: true },
+  );
   await initialisePassport();
   req.logOut();
   res.redirect('/login');
