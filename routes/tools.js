@@ -9,7 +9,7 @@ const checkAuth = (req, res, next) => {
   return res.redirect('/login');
 };
 
-router.get('/tools', checkAuth, async (req, res) => {
+router.get('/announcements', checkAuth, async (req, res) => {
   res.render('tools/announcements.ejs', {
     user: req?.user,
     allUsers: await userDB.find(),
