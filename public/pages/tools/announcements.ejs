@@ -50,15 +50,69 @@
                 </ol>
               </nav>
             </div>
-            <div class="card">
-              <div class="card-body">
-                <h4 class="card-title">Announcements</h4>
-                <p>
-                  This tool can be used to post announcements to a set channel
-                  on the discord server.
-                </p>
-                <div class="row">
-                  <div class="col-12">Test</div>
+            <div class="row">
+              <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Create an Announcement</h4>
+                    <form
+                      class="forms-sample"
+                      action="/tools/announcements/create"
+                      method="post"
+                    >
+                      <div class="form-group row">
+                        <label for="eventName" class="col-sm-3 col-form-label"
+                          >Name</label
+                        >
+                        <div class="col-sm-9">
+                          <input
+                            name="eventName"
+                            type="text"
+                            class="form-control"
+                            id="eventName"
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="eventReward" class="col-sm-3 col-form-label"
+                          >Reward</label
+                        >
+                        <div class="col-sm-9">
+                          <input
+                            name="eventReward"
+                            type="text"
+                            class="form-control"
+                            id="eventReward"
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label
+                          for="eventDescription"
+                          class="col-sm-3 col-form-label"
+                          >Description</label
+                        >
+                        <div class="col-sm-9">
+                          <textarea
+                            name="eventDescription"
+                            class="form-control h-100"
+                            id="eventDescription"
+                            rows="10"
+                            required
+                          ></textarea>
+                        </div>
+                      </div>
+
+                      <div class="mt-4">
+                        <button type="submit" class="btn btn-primary me-2">
+                          Submit
+                        </button>
+                        <button class="btn btn-dark">Cancel</button>
+                      </div>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>

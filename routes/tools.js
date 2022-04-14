@@ -16,4 +16,10 @@ router.get('/announcements', checkAuth, async (req, res) => {
   });
 });
 
+router.post('/announcements/create', checkAuth, async (req, res) => {
+  console.log('It did a thing');
+  res.status(200);
+  return res.redirect('/tools/announcements');
+});
+
 module.exports = router;
