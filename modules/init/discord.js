@@ -3,7 +3,9 @@ const DiscordJS = require('discord.js');
 
 const { onDiscordReady } = require('../discord/events/onReady');
 const { onDiscordMessage } = require('../discord/events/onMessage');
-const { onDiscordInteraction } = require('../discord/events/onInteractionCreate');
+const {
+  onDiscordInteraction,
+} = require('../discord/events/onInteractionCreate');
 
 // Discord Client
 const discordClient = new DiscordJS.Client({
@@ -22,8 +24,12 @@ const discordClient = new DiscordJS.Client({
 
 // Discord Events
 discordClient.on('ready', () => onDiscordReady(discordClient));
-discordClient.on('messageCreate', (message) => onDiscordMessage(discordClient, message));
-discordClient.on('interactionCreate', (interaction) => onDiscordInteraction(discordClient, interaction));
+discordClient.on('messageCreate', (message) =>
+  onDiscordMessage(discordClient, message),
+);
+discordClient.on('interactionCreate', (interaction) =>
+  onDiscordInteraction(discordClient, interaction),
+);
 
 // For querying stats
 module.exports.queryStats = async () => {
@@ -31,15 +37,20 @@ module.exports.queryStats = async () => {
   const GUILD_MEMBERS = await GUILD.members.fetch({ withPresences: true });
 
   const userStats = {
-    online: GUILD_MEMBERS.filter((m) => !m?.user?.bot
-    && (m?.presence?.status === 'online'
-    || m?.presence?.status === 'idle'
-    || m?.presence?.status === 'dnd')).size,
+    online: GUILD_MEMBERS.filter(
+      (m) =>
+        !m?.user?.bot &&
+        (m?.presence?.status === 'online' ||
+          m?.presence?.status === 'idle' ||
+          m?.presence?.status === 'dnd'),
+    ).size,
     total: GUILD_MEMBERS.filter((m) => !m?.user?.bot).size,
   };
 
   return userStats;
 };
+
+module.exports.discordClient = discordClient;
 
 // Login in our Discord bot
 discordClient.login(process.env.DISCORD_TOKEN);

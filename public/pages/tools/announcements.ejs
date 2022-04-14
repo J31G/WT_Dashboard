@@ -51,7 +51,7 @@
               </nav>
             </div>
             <div class="row">
-              <div class="col-lg-6 grid-margin stretch-card">
+              <div class="col-lg grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Create an Announcement</h4>
@@ -61,47 +61,111 @@
                       method="post"
                     >
                       <div class="form-group row">
-                        <label for="eventName" class="col-sm-3 col-form-label"
-                          >Name</label
+                        <label
+                          for="announcementChannel"
+                          class="col-sm-3 col-form-label"
+                          >Channel</label
                         >
                         <div class="col-sm-9">
-                          <input
-                            name="eventName"
-                            type="text"
+                          <select
                             class="form-control"
-                            id="eventName"
+                            name="announcementChannel"
+                            id="announcementChannel"
                             required
-                          />
+                          >
+                            <% channelData.forEach((channel) => { %>
+                            <option value="<%= channel.id %>">
+                              <%= channel.name %>
+                            </option>
+                            <% }) %>
+                          </select>
                         </div>
                       </div>
-                      <div class="form-group row">
-                        <label for="eventReward" class="col-sm-3 col-form-label"
-                          >Reward</label
-                        >
-                        <div class="col-sm-9">
-                          <input
-                            name="eventReward"
-                            type="text"
-                            class="form-control"
-                            id="eventReward"
-                            required
-                          />
-                        </div>
-                      </div>
+
                       <div class="form-group row">
                         <label
-                          for="eventDescription"
+                          for="announcementTitle"
                           class="col-sm-3 col-form-label"
-                          >Description</label
+                          >Title</label
+                        >
+                        <div class="col-sm-9">
+                          <input
+                            name="announcementTitle"
+                            type="text"
+                            class="form-control"
+                            id="announcementTitle"
+                            required
+                          />
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label
+                          for="announcementMessage"
+                          class="col-sm-3 col-form-label"
+                          >Message</label
                         >
                         <div class="col-sm-9">
                           <textarea
-                            name="eventDescription"
+                            name="announcementMessage"
                             class="form-control h-100"
-                            id="eventDescription"
+                            id="announcementMessage"
                             rows="10"
                             required
                           ></textarea>
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Language</label>
+                        <div
+                          class="col-sm-9 d-md-flex align-items-center justify-content-between"
+                        >
+                          <div class="d-flex align-items-center">
+                            <input
+                              class="form-check-input"
+                              name="english"
+                              type="checkbox"
+                              id="inlineCheckbox1"
+                              value="EN"
+                              style="width: 2em; height: 2em"
+                            />
+                            <label
+                              for="inlineCheckbox1"
+                              class="form-check-label mx-3"
+                              >English</label
+                            >
+                          </div>
+                          <div class="d-flex align-items-center">
+                            <input
+                              class="form-check-input"
+                              name="german"
+                              type="checkbox"
+                              id="inlineCheckbox2"
+                              value="DE"
+                              style="width: 2em; height: 2em"
+                            />
+                            <label
+                              class="form-check-label mx-3"
+                              for="inlineCheckbox2"
+                              >German</label
+                            >
+                          </div>
+                          <div class="d-flex align-items-center">
+                            <input
+                              class="form-check-input"
+                              name="french"
+                              type="checkbox"
+                              id="inlineCheckbox3"
+                              value="FR"
+                              style="width: 2em; height: 2em"
+                            />
+                            <label
+                              class="form-check-label mx-3"
+                              for="inlineCheckbox3"
+                              >French</label
+                            >
+                          </div>
                         </div>
                       </div>
 
