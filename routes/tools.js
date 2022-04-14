@@ -10,7 +10,7 @@ const checkAuth = (req, res, next) => {
 };
 
 router.get('/tools', checkAuth, async (req, res) => {
-  res.render('tools/team-gamigo.ejs', {
+  res.render('tools/announcements.ejs', {
     user: req?.user,
     allUsers: await userDB.find(),
   });
