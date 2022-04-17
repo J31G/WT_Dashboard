@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const moment = require('moment');
 const userDB = require('../models/users');
 const messageCountDB = require('../models/messageCount');
+const xHatersCountDB = require('../models/xHaters');
 const { initialisePassport } = require('../modules/init/passport');
 const { queryStats } = require('../modules/init/discord');
 
@@ -48,6 +49,8 @@ router.get('/', checkAuth, async (req, res) =>
     msgCountYesterday: await messageCountDB.findOne({
       date_time: { $gte: moment().subtract(1, 'day').startOf('day') },
     }),
+    xHaterCount: await xHatersCountDB.findOneAndUpdate({}, { 
+      $inc: { count: 1 } }, { upsert: true, new: true }),
   }),
 );
 router.get('/login', checkNotAuth, (req, res) => res.render('login.ejs'));
