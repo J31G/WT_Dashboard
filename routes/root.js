@@ -38,7 +38,7 @@ router.use('/logs', logsRoute);
 router.use('/tools', toolsRoute);
 
 // GET
-router.get('/', checkAuth, async (req, res) =>
+router.get('/', checkAuth, async (req, res) => {
   res.render('index.ejs', {
     user: req?.user,
     allUsers: await userDB.find(),
@@ -49,10 +49,15 @@ router.get('/', checkAuth, async (req, res) =>
     msgCountYesterday: await messageCountDB.findOne({
       date_time: { $gte: moment().subtract(1, 'day').startOf('day') },
     }),
-    xHaterCount: await xHatersCountDB.findOneAndUpdate({}, { 
-      $inc: { count: 1 } }, { upsert: true, new: true }),
-  }),
-);
+    xHaterCount: await xHatersCountDB.findOneAndUpdate(
+      {},
+      {
+        $inc: { currentCount: 1 },
+      },
+      { upsert: true, new: true },
+    ),
+  });
+});
 router.get('/login', checkNotAuth, (req, res) => res.render('login.ejs'));
 
 // POST
