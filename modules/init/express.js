@@ -19,12 +19,14 @@ app.set('views', './public/pages');
 app.use(express.static('./public/assets'));
 app.use(express.urlencoded({ extended: true }));
 app.use(flash());
-app.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: false,
-  cookie: { secure: true },
-}));
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: true },
+  }),
+);
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.json());
