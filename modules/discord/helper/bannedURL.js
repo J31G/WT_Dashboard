@@ -52,7 +52,10 @@ module.exports.bannedURLDetection = async (message, client) => {
       .setDescription('The following user has been muted for posted a banned link. More details below.')
       .addField('Username', `${discordUser} || ${discordUser?.nickname ? discordUser?.nickname : message?.author?.username}`)
       .addField('Message', message.content)
-      .setFooter(`© BigBOT ${new Date().getFullYear()}`, client.user.avatarURL)
+      .setFooter({
+        text: `© BigBOT ${year.getFullYear()}`,
+        iconURL: client.user.avatarURL,
+      })
       .setTimestamp();
 
     // Send embed to channel

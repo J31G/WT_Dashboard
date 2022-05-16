@@ -32,7 +32,10 @@ module.exports = {
       .setImage(
         'https://media.discordapp.net/attachments/900305371787304981/900306192159637594/orange-halloween-banner-with-pumpkin-spider-bats_1017-21309.jpg',
       )
-      .setFooter(`© BigBOT ${year.getFullYear()}`, client.user.avatarURL)
+      .setFooter({
+        text: `© BigBOT ${year.getFullYear()}`,
+        iconURL: client.user.avatarURL,
+      })
       .setTimestamp();
 
     const row = new MessageActionRow().addComponents(

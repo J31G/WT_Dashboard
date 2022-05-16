@@ -18,7 +18,10 @@ module.exports.faqMessage = async (message, discordClient) => {
   const embed = new MessageEmbed()
     .setColor('#00000')
     .setDescription('Your question is similar to the previously answered question below. If this is irrelevant, feel free to disregard this message.')
-    .setFooter(`© BigBOT ${year.getFullYear()}`, discordClient.user.avatarURL)
+    .setFooter({
+      text: `© BigBOT ${year.getFullYear()}`,
+      iconURL: discordClient.user.avatarURL,
+    })
     .setTimestamp();
 
   relevantQuestions.map((q) => embed.addField(`**Q: ${q.question}**`, `**A:** ${q.answer}`));

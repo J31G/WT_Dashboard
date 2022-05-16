@@ -32,7 +32,10 @@ module.exports = {
       .setImage(
         'https://i.imgur.com/Y7vVRsE.png',
       )
-      .setFooter(`© BigBOT ${year.getFullYear()}`, client.user.avatarURL)
+      .setFooter({
+        text: `© BigBOT ${year.getFullYear()}`,
+        iconURL: client.user.avatarURL,
+      })
       .setTimestamp();
 
     const row = new MessageActionRow().addComponents(

@@ -94,7 +94,10 @@ module.exports.halloween = async (discordClient, interaction) => {
       `${timeRemaining.hours}h, ${timeRemaining.minutes}m, ${timeRemaining.seconds}s`,
       true,
     )
-    .setFooter(`© BigBOT ${year.getFullYear()}`, discordClient.user.avatarURL)
+    .setFooter({
+      text: `© BigBOT ${year.getFullYear()}`,
+      iconURL: discordClient.user.avatarURL,
+    })
     .setTimestamp();
 
   const row = new MessageActionRow().addComponents(

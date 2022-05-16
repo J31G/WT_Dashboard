@@ -24,7 +24,10 @@ module.exports.questions = async (discordClient, interaction) => {
   const embed = new MessageEmbed()
     .setColor('#00000')
     .setDescription(await description?.text)
-    .setFooter(`© BigBOT ${year.getFullYear()}`, discordClient.user.avatarURL)
+    .setFooter({
+      text: `© BigBOT ${year.getFullYear()}`,
+      iconURL: discordClient.user.avatarURL,
+    })
     .setTimestamp();
 
   await Promise.all(translatedData.map(async (q) => {

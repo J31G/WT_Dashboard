@@ -54,21 +54,30 @@ router.post('/announcements/create', checkAuth, async (req, res) => {
   const embedEN = new Discord.MessageEmbed()
     .setTitle(`:flag_gb: ${req.body.announcementTitle}`)
     .setDescription(req.body.announcementMessage)
-    .setFooter(`© BigBOT ${year.getFullYear()}`, discordClient.user.avatarURL)
+    .setFooter({
+      text: `© BigBOT ${year.getFullYear()}`,
+      iconURL: discordClient.user.avatarURL,
+    })
     .setTimestamp();
   const embedDE = new Discord.MessageEmbed()
     .setTitle(
       `:flag_de: ${(await translate(req.body.announcementTitle, 'DE')).text}`,
     )
     .setDescription((await translate(req.body.announcementMessage, 'DE')).text)
-    .setFooter(`© BigBOT ${year.getFullYear()}`, discordClient.user.avatarURL)
+    .setFooter({
+      text: `© BigBOT ${year.getFullYear()}`,
+      iconURL: discordClient.user.avatarURL,
+    })
     .setTimestamp();
   const embedFR = new Discord.MessageEmbed()
     .setTitle(
       `:flag_fr: ${(await translate(req.body.announcementTitle, 'FR')).text}`,
     )
     .setDescription((await translate(req.body.announcementMessage, 'FR')).text)
-    .setFooter(`© BigBOT ${year.getFullYear()}`, discordClient.user.avatarURL)
+    .setFooter({
+      text: `© BigBOT ${year.getFullYear()}`,
+      iconURL: discordClient.user.avatarURL,
+    })
     .setTimestamp();
 
   const embeds = [];
@@ -82,11 +91,6 @@ router.post('/announcements/create', checkAuth, async (req, res) => {
   );
   channel
     .send({ embeds })
-    /* .then((msg) =>
-      setTimeout(() => {
-        msg.delete().catch(console.error);
-      }, 5000),
-    ) */
     .catch(console.error);
   return res.status(200).redirect('/tools/announcements');
 });

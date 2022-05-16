@@ -17,7 +17,10 @@ module.exports = {
       .setColor('#00000')
       .setDescription('Your question is similar to the previously answered question below. If this is irrelevant, feel free to disregard this message.')
       .addField(`**Q: ${question.question}**`, `**A:** ${question.answer}`)
-      .setFooter(`© BigBOT ${year.getFullYear()}`, client.user.avatarURL)
+      .setFooter({
+        text: `© BigBOT ${year.getFullYear()}`,
+        iconURL: client.user.avatarURL,
+      })
       .setTimestamp();
 
     const row = new MessageActionRow()
