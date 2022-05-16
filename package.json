@@ -37,7 +37,7 @@
     "mongoose": "^6.0.12",
     "passport": "^0.5.0",
     "passport-local": "^1.0.0",
-    "url-crypt": "^1.2.1",
+    "url-crypt": "github:J31G/url-crypt",
     "wokcommands": "^1.5.3"
   },
   "repository": {
